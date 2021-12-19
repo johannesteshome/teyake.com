@@ -6,15 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Dashboard</title>
         <style>
-            table,
-            th,
-            td {
+            .outline {
                 border: 1px solid black;
             }
         </style>
     </head>
     <body>
-        <table align="center">
+        <table align="center" class="outline">
             <tr>
                 <td width="930px">
                     <img
@@ -58,10 +56,11 @@
                 </td>
             </tr>
         </table>
+        <br /><br /><br />
         <table align="center">
             <tr>
                 <td width="240px"></td>
-                <td width="960px">
+                <td width="960px" class="outline">
                     <h1>
                         &nbsp;Exam Name
                         <img
@@ -74,7 +73,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="outline">
                     <p>
                         &nbsp;Exam Name(Code)
                         <img
@@ -97,7 +96,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="outline">
                     <input
                         type="text"
                         name="student-search"
@@ -117,6 +116,52 @@
                     <br />
                     <img src="resources/images/check.png" width="12px" alt="" />
                     <span>&nbsp;Jane Doe</span>
+                    <br />
+                </td>
+                <td valign="top">
+                    <span> Access:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                    <img
+                        src="resources/images/switch.png"
+                        width="20px"
+                        alt=""
+                    />
+                    <br /><br /><br />
+                    <p>4</p>
+                    <p>Submitted</p>
+                </td>
+            </tr>
+        </table>
+        <table align="center">
+            <tr align="center">
+                <td width="240px"></td>
+                <td width="240px" class="outline">
+                    <br />
+                    <img src="resources/images/exit.png" width="60px" alt="" />
+                    <p>Close the exam</p>
+                    <br />
+                </td>
+                <td width="240px" class="outline">
+                    <br />
+                    <img
+                        src="resources/images/notepad.png"
+                        width="60px"
+                        alt=""
+                    />
+                    <p>Show Results</p>
+                    <br />
+                </td>
+                <td width="240px" class="outline">
+                    <img
+                        src="resources/images/printer.png"
+                        width="60px"
+                        alt=""
+                    />
+                    <p>Print Results</p>
+                    <br />
+                </td>
+                <td width="240px" class="outline">
+                    <img src="resources/images/email.png" width="60px" alt="" />
+                    <p>Send Results</p>
                     <br />
                 </td>
             </tr>

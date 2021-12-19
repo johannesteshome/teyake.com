@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teyake.com</title>
+    <style>
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table align="center">
+        <tr>
+            <td width="930px">
+                <a href="home.html"><img src="resources/images/teyake_logo.png" alt="Teyake logo" width="100px" /></a>
+            </td>
+            <td align="left" width="730px">
+                <a href="#"><img src="assets/question-mark.png" width="16px" />
+                    <span>Support</span></a>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table align="center">
+        <tr>
+            <td width="830px" align="center" height="80%">
+                <h1>Registration</h1>
+                <p>
+                  <form>
+
+                      <input id="signinName" type="text" name="userName"  placeholder="Name" size="70%" maxlength="40" required>
+                      <br><br>
+                      INSTITUTION: 
+                      <select id="institute" name="instute" required >
+                          <option value="" disabled selected hidden>CHOOSE AN INSTITUTE.</option>
+                          <option value="aastu">ADDIS ABEBA SCIENCE AND TECHNOLOGY UNIVERSITY</option> 
+                          <option value="astu">ADAMA SCIENCE AND TECHNOLOGY UNIVERSITY</option>
+                          <option value="aaau">ADDIS ABEBA UNIVERSITY</option>
+                          <option value="dbu">DEBREBRHAN UNIVERSITY </option>
+                          <option value="gdu">GONDAR UNIVERSITY</option>
+                          <option value="o">OTHER</option>
+                      </select>
+                      <br><br>
+
+                      <input id="signinmail" type="email" name="email"  placeholder="Email" size="70%" required>
+                      <br><br>
+
+                      <input id="passw" type="password" name="passw"  placeholder="Password" minlength="8" maxlength="35" size="70%" required>
+                      <br><br>
+
+                      <input id="passc" type="password" name="passw"  placeholder="Comfirm Password" minlength="8" maxlength="35" size="70%" required>
+                      <br><br>
+                      <input type="button" value="Sign Up" size="20%">
+                  </form>
+                </p>
+            </td>
+
+        </tr>
+
+    </table>
+</body>
+
+</html>
