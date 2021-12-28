@@ -24,32 +24,32 @@
                 </td>
                 <td align="right" width="730px">
                     <a href="#"
-                        ><img src="resources/assets/pencil.png" width="16px" />
+                        ><img src="resources/images/pencil.png" width="16px" />
                         <span>New Exam</span></a
                     >
                     <a href="#"
-                        ><img src="resources/assets/list.png" width="16px" />
+                        ><img src="resources/images/list.png" width="16px" />
                         <span>Exam List</span></a
                     >
                     <a href="#"
-                        ><img src="resources/assets/eye.png" width="16px" />
+                        ><img src="resources/images/eye.png" width="16px" />
                         <span>Results</span></a
                     >
                     <a href="#"
-                        ><img src="resources/assets/home.png" width="16px" />
+                        ><img src="resources/images/home.png" width="16px" />
                         <span>My School</span></a
                     >
                     <a href="#"
-                        ><img src="resources/assets/user.png" width="16px" />
+                        ><img src="resources/images/user.png" width="16px" />
                         <span>Profile</span></a
                     >
                     <a href="#"
-                        ><img src="resources/assets/logout.png" width="16px" />
+                        ><img src="resources/images/logout.png" width="16px" />
                         <span>Log Out</span></a
                     >
                     <a href="#"
                         ><img
-                            src="resources/assets/question-mark.png"
+                            src="resources/images/question-mark.png"
                             width="16px"
                         />
                         <span>Support</span></a
@@ -58,6 +58,7 @@
             </tr>
         </table>
         <br><br>
+        <form action="myexam.html">
         <table align="center" bgcolor="white" border="1px">
             <tr align="center" bgcolor="grey">
                 <td width = "1280px"><h2>Create New Exam</h2></td>
@@ -113,8 +114,48 @@
                         <input type="checkbox" name="translation" id="translation">
                         <p>Provide translation for words or sentences</p>
                     </div>
+                    
+                </details>
+                <hr>
+                <details>
+                    <summary>Subject tools</summary>
+                    <hr>
+                    <div>
+                        <label for="calculator">Calculator</label>
+                        <input type="checkbox" name="calculator" id="calculator">
+                        <p>Gives the student access to a Calculator</p>
+                        <label for="programming">Programming</label>
+                        <input type="checkbox" name="programming" id="programming">
+                        <p>Gives the student access to programming tools</p>
+                    </div>
                 </details>
             </td></tr>
         </table>
+        <br><br>
+        <table align="center" bgcolor="white" border="1px">
+            <tr align="center" bgcolor="grey">
+                <td width = "1280px"><h2>Security</h2></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <br>
+                    <input type="radio" name="high-security" id="high-security">
+                    <label for="high-security">High Security Mode</label>
+                    <p>Recommended Mode, Camera and Microphone access</p>
+                    <hr>
+                    <input type="radio" name="no-security" id="no-security">
+                    <label for="no-security">No Security</label>
+                    <p>Not Recommended, accessible through any browser</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="lightgray">
+                    <br>
+                    <button type="submit" align="center">Create Exam</button>
+                    <br><br>
+                </td>
+            </tr>
+        </table>   
+    </form>
     </body>
 </html>
