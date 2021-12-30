@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="New Exam Platform" />
+    <meta name="keywords" content="Online Exams, Quizzes" />
+    <meta name="author" content="Group I of Section D" />
+    <link rel="icon" href="resources/images/teyake_ico.png" type="image/icon type" />
+        <title>New Exam</title>
+        <style>
+            /* table, th, td{
+                border: 1px solid black;
+            } */
+        </style>
+    </head>
+    <body bgcolor="lightgray">
+        <table align="center" bgcolor="white" >
+            <tr>
+                <td width="930px">
+                    <a href="home.html"
+                        ><img
+                            src="resources/images/teyake_logo.png"
+                            alt="Teyake logo"
+                            width="100px"
+                    /></a>
+                </td>
+                <td align="right" width="730px">
+                    <a href="teacher-profile.html"
+                        ><img src="resources/images/user.png" width="16px" />
+                        <span>Profile</span></a
+                    >
+                    <a href="home.html"
+                        ><img src="resources/images/logout.png" width="16px" />
+                        <span>Log Out</span></a
+                    >
+                    <a href="support/support.html"
+                        ><img
+                            src="resources/images/question-mark.png"
+                            width="16px"
+                        />
+                        <span>Support</span></a
+                    >
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <form action="myexam.html">
+        <table align="center" bgcolor="white" border="1px">
+            <tr align="center" bgcolor="grey">
+                <td width = "1280px"><h2>Create New Exam</h2></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <br>
+                    <input type="text" name="exam-name" id="exam-name" placeholder=" Enter the exam name" size="100%" >
+                    <br>
+                    <i>Assign the exa a name(to be displayed)</i>
+                    <br><br>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <table align="center" bgcolor="white" border="1px">
+            <tr>
+                <td width="1280px" align="center" bgcolor="gray"><h2>Exam Questions</h2></td>
+            </tr>
+            <tr>
+                <td align="center" >
+                    <br>
+                    <input type="radio" name="exam-questions" id="exam-q-one">
+                    <label for="exam-q-one">Write Exam Questions</label>
+                    <br>
+                    <label for="exam-q-one">Write the Questions here or Paste from another location</label>
+                    <br><br>
+                    <hr>
+                    <input type="radio" name="exam-questions" id="exam-q-two">
+                    <label for="exam-q-two">Auto-marked exams</label>
+                    <br>
+                    <label for="exam-q-two">Exams with different question types and automatic marking</label>
+                    <br><br>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <table align="center" bgcolor="white" border="1px" cellpadding="10px">
+            <tr><td width="1280px" align="center" bgcolor="gray"><h2>Student's Workspace</h2></td></tr>
+            <tr><td>
+                <details>
+                    <hr>
+                    <summary>Accessibility</summary>
+                    <div>
+                        <label for="text-to-speech">Text to Speech</label>
+                        <input type="checkbox" name="tts" id="text-to-speech">
+                        <p> Gives the option to have text read aloud; either text in the exam or written by the student.
+                            This activates the function for all students.</p>
+                        </div>
+                        <div><label for="translation">
+                            Allow translation
+                        </label>
+                        <input type="checkbox" name="translation" id="translation">
+                        <p>Provide translation for words or sentences</p>
+                    </div>
+                    
+                </details>
+                <hr>
+                <details>
+                    <summary>Subject tools</summary>
+                    <hr>
+                    <div>
+                        <label for="calculator">Calculator</label>
+                        <input type="checkbox" name="calculator" id="calculator">
+                        <p>Gives the student access to a Calculator</p>
+                        <label for="programming">Programming</label>
+                        <input type="checkbox" name="programming" id="programming">
+                        <p>Gives the student access to programming tools</p>
+                    </div>
+                </details>
+            </td></tr>
+        </table>
+        <br><br>
+        <table align="center" bgcolor="white" border="1px">
+            <tr align="center" bgcolor="grey">
+                <td width = "1280px"><h2>Security</h2></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <br>
+                    <input type="radio" name="high-security" id="high-security">
+                    <label for="high-security">High Security Mode</label>
+                    <p>Recommended Mode, Camera and Microphone access</p>
+                    <hr>
+                    <input type="radio" name="no-security" id="no-security">
+                    <label for="no-security">No Security</label>
+                    <p>Not Recommended, accessible through any browser</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="lightgray">
+                    <br>
+                    <button type="submit" align="center">Create Exam</button>
+                    <br><br>
+                </td>
+            </tr>
+        </table>   
+    </form>
+    </body>
+</html>
