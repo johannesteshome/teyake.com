@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Teyake</title>
+    <link rel="stylesheet" href="style-reset.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body id="top">
+    <!-- Container for the whole document, replacement for the body tag to avoid styling the tag directly -->
+    <div class="container text-white"> 
+      <!-- The sidebar/menu component which is only visible on sreen sizes below 1150px -->
+      <div class="sidebar transition">
+        <div class="sidebar-head flex justify-between items-center">
+          <img src="./assets/teyake_white_fill.png" class="logo" />
+          <span class="menu-close-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </div>
+        <form action="#" class="enter-exam-sidebar flex flex-col">
+          <label for="exam-key" class="enter-exam-label font-semibold">Student</label>
+          <div class="enter-exam-input">
+            <input type="text" name="exam-key" id="exam-key" placeholder="Enter Exam Key"/>
+            <button type="submit" class="btn enter-exam-btn">
+              Next
+            </button>
+          </div>
+        </form>
+        <div class="sidebar-sign-in flex flex-col w-full">
+          <p>Teacher</p>
+          <div class="flex">
+            <button type="button" class="transparent">Sign In</button>
+            <button type="button">Sign Up</button>
+          </div>
+        </div>
+        <div class="sidebar-links">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Tools</a></li>
+            <li><a href="#">Testimonials</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End of Sidebar Component -->
+      <!-- Header for mobile view -->
+      <header class="">
+        <img src="./assets/teyake_white_fill.png" class="logo" />
+        <span class="menu-btn"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+            clip-rule="evenodd"
+          /></svg
+        >
+        </span>
+      </header>
+      <!-- End of Mobile View Header -->
+      <!-- Header for Desktop view only above 1150px -->
+      <div class="header">
+        <div class="header-left">
+            <img src="./assets/teyake_white_fill.png" class="logo" />
+          <nav>
+            <ul class="primary-nav flex">
+              <li class="nav-active"><a href="#">Home</a></li>
+              <li><a href="#">How it Works</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header-right flex items-center justify-between">
+          <div class="sign-in flex flex-col items-center justify-center gap-1">
+            <div class="flex gap-4">
+              <button type="button">Sign In</button>
+              <button type="button">Sign Up</button>
+            </div>
+            <p class="text-center">Teachers</p>
+          </div>
+          <!-- Exam Key input Section -->
+          <div class="flex flex-col items-center gap-2">
+            <form action="#" class="enter-exam-head flex text-center">
+              <div class="enter-exam-input">
+                <input type="text" name="exam-key" id="exam-key" placeholder="Enter Exam Key"/>
+                <button type="submit" class="btn enter-exam-btn enter-exam-head-btn">
+                  Next
+                </button>
+              </div>
+            </form>
+            <label for="exam-key" class="enter-exam-label text-center">Students enter your exam key above</label>
+          </div>
+          <!-- End of exam key input section -->
+        </div>
+      </div>
+      <!-- End of Desktop Header -->
+      <!-- Intro content and hero image container -->
+      <section class="intro-section">
+        <div class="hero"></div>
+        <div class="intro-content">
+          <!-- Exam Key input section -->
+          <form action="#" class="enter-exam-intro flex flex-col items-center text-center">
+            <div class="enter-exam-input">
+              <input type="text" name="exam-key" id="exam-key" placeholder="Enter Exam Key"/>
+              <button type="submit" class="btn enter-exam-btn">
+                Next
+              </button>
+            </div>
+            <label for="exam-key" class="enter-exam-label text-center"
+              >Students enter your exam key above</label
+            >
+          </form>
+          <!-- End of exam key input -->
+          <q>For Teachers by Teachers</q>
+          <h1><span>Do what</span>YOU DO BEST</h1>
+          <p>
+            Feel confident conducting your digital exams with testing software
+            made by teachers who understand the realities of the classroom.
+            Intuitive to use and trusted by teachers like you since 2015, Teyake.com
+            equips you with all the power and function you need to create exams
+            for your students, your way.
+          </p>
+              <button class="intro-btn btn">Sign Up For Your Free Trial</button>
+              <button class="intro-btn btn">See how it works</button>
+        </div>
+      </section>
+      <!-- End of intro Content -->
+      <!-- Main container -->
+      <main>
+        <!-- Card List container -->
+        <div class="card-list-container">
+          <div class="card-list">
+            <div class="card">
+              <img
+                src="assets/home/tools.png"
+                alt="Educational tools illustration"
+                class="card-img"
+              />
+              <h2 class="card-title">Everything you need</h2>
+              <p class="card-text">
+                Create comprehensive exams with powerful tools that are easy to
+                use and quick to apply.
+              </p>
+            </div>
+            <div class="card">
+              <img
+                src="assets/home/computer.png"
+                alt="Simple computer illustration"
+                class="card-img"
+              />
+              <h2 class="card-title">Make it simple</h2>
+              <p class="card-text">
+                Conduct exams with confidence and control thanks to our intuituve
+                software that simplifies technical complexity
+              </p>
+            </div>
+            <div class="card">
+              <img
+                src="assets/home/empower.png"
+                alt="Empowering students illustration"
+                class="card-img"
+              />
+              <h2 class="card-title">Empower Every Student</h2>
+              <p class="card-text">
+                Customize exams to empower each student's individual needs and let
+                their knowledge shine.
+              </p>
+            </div>
+          </div>
+          <button class="btn card-list-btn">How it works</button>
+        </div>
+        <!-- End of card list -->
+        <div class="credits">
+          <img
+            class="quotation-mark"
+            src="./assets/home/quote.png"
+            alt="quotation mark"
+          />
+          <p>
+            The best service in my practice. Everything works very quickly and
+            practically. For me <span class="accented">Teyake.com</span> became
+            a discovery of the last year, at this time makes life easier for
+            both teachers and students.
+          </p>
+          <p>Easy to view progress of all students</p>
+          <p class="accented">Abebe Kebede</p>
+          <p>Biology Teacher</p>
+        </div>
+        <!-- Credits and Testimonials + Features Sections -->
+        <section class="subject-info flex flex-col items-center">
+          <h3 class="subject-info-head">
+            But i teach
+            <span class="accented" id="subject-name">Physics</span> . . . will
+            <span class="accented">Teyake.com</span> work for me and my students?
+          </h3>
+          <div class="subject-choice"></div>
+          <div class="subject-details-container">
+            <div class="subject-text-section">
+              <h4 id="teacher-name" class="accented"></h4>
+              <span id="school-name"></span>
+              <p id="subject-text"></p>
+            </div>
+            <div class="subject-details">
+              <p class="subject-details-title">
+                These <span class="accented">Teyake.com</span>'s integrated
+                tools are available during your exam
+              </p>
+              <div>
+                <div class="subject-detail">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                  >
+                    <path
+                      d="M19.829 10.4454L13.8293 17.1117C13.7013 17.253 13.5226 17.333 13.3333 17.333H9.33352C9.07087 17.333 8.83221 17.1783 8.72422 16.9384C8.61756 16.697 8.66155 16.4157 8.83754 16.2211L14.4359 10.0001L8.83754 3.78041C8.66155 3.58442 8.61622 3.3031 8.72422 3.06311C8.83221 2.82179 9.07087 2.66713 9.33352 2.66713H13.3333C13.5226 2.66713 13.7013 2.74846 13.8293 2.88712L19.829 9.55343C20.0569 9.80675 20.0569 10.1934 19.829 10.4454Z"
+                      fill="#FBB453"
+                    ></path>
+                    <path
+                      d="M11.1628 10.4454L5.16314 17.1117C5.03514 17.253 4.85649 17.333 4.66716 17.333H0.66738C0.404728 17.333 0.166074 17.1783 0.0580799 16.9384C-0.048581 16.697 -0.00458339 16.4157 0.171407 16.2211L5.76977 10.0001L0.171407 3.78041C-0.00458339 3.58442 -0.0499143 3.3031 0.0580799 3.06311C0.166074 2.82179 0.404728 2.66713 0.66738 2.66713H4.66716C4.85649 2.66713 5.03514 2.74846 5.16314 2.88712L11.1628 9.55343C11.3908 9.80675 11.3908 10.1934 11.1628 10.4454Z"
+                      fill="#DBDBDB"
+                    ></path>
+                  </svg>
+                  <p>Calculator</p>
+                </div>
+                <div class="subject-detail">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                  >
+                    <path
+                      d="M19.829 10.4454L13.8293 17.1117C13.7013 17.253 13.5226 17.333 13.3333 17.333H9.33352C9.07087 17.333 8.83221 17.1783 8.72422 16.9384C8.61756 16.697 8.66155 16.4157 8.83754 16.2211L14.4359 10.0001L8.83754 3.78041C8.66155 3.58442 8.61622 3.3031 8.72422 3.06311C8.83221 2.82179 9.07087 2.66713 9.33352 2.66713H13.3333C13.5226 2.66713 13.7013 2.74846 13.8293 2.88712L19.829 9.55343C20.0569 9.80675 20.0569 10.1934 19.829 10.4454Z"
+                      fill="#FBB453"
+                    ></path>
+                    <path
+                      d="M11.1628 10.4454L5.16314 17.1117C5.03514 17.253 4.85649 17.333 4.66716 17.333H0.66738C0.404728 17.333 0.166074 17.1783 0.0580799 16.9384C-0.048581 16.697 -0.00458339 16.4157 0.171407 16.2211L5.76977 10.0001L0.171407 3.78041C-0.00458339 3.58442 -0.0499143 3.3031 0.0580799 3.06311C0.166074 2.82179 0.404728 2.66713 0.66738 2.66713H4.66716C4.85649 2.66713 5.03514 2.74846 5.16314 2.88712L11.1628 9.55343C11.3908 9.80675 11.3908 10.1934 11.1628 10.4454Z"
+                      fill="#DBDBDB"
+                    ></path>
+                  </svg>
+                  <p>
+                    Text editor toolbar includes Greek letters and equation
+                    symbols
+                  </p>
+                </div>
+                <div class="subject-detail">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                  >
+                    <path
+                      d="M19.829 10.4454L13.8293 17.1117C13.7013 17.253 13.5226 17.333 13.3333 17.333H9.33352C9.07087 17.333 8.83221 17.1783 8.72422 16.9384C8.61756 16.697 8.66155 16.4157 8.83754 16.2211L14.4359 10.0001L8.83754 3.78041C8.66155 3.58442 8.61622 3.3031 8.72422 3.06311C8.83221 2.82179 9.07087 2.66713 9.33352 2.66713H13.3333C13.5226 2.66713 13.7013 2.74846 13.8293 2.88712L19.829 9.55343C20.0569 9.80675 20.0569 10.1934 19.829 10.4454Z"
+                      fill="#FBB453"
+                    ></path>
+                    <path
+                      d="M11.1628 10.4454L5.16314 17.1117C5.03514 17.253 4.85649 17.333 4.66716 17.333H0.66738C0.404728 17.333 0.166074 17.1783 0.0580799 16.9384C-0.048581 16.697 -0.00458339 16.4157 0.171407 16.2211L5.76977 10.0001L0.171407 3.78041C-0.00458339 3.58442 -0.0499143 3.3031 0.0580799 3.06311C0.166074 2.82179 0.404728 2.66713 0.66738 2.66713H4.66716C4.85649 2.66713 5.03514 2.74846 5.16314 2.88712L11.1628 9.55343C11.3908 9.80675 11.3908 10.1934 11.1628 10.4454Z"
+                      fill="#DBDBDB"
+                    ></path>
+                  </svg>
+                  <p>English thesaurus</p>
+                </div>
+                <div class="subject-detail">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                  >
+                    <path
+                      d="M19.829 10.4454L13.8293 17.1117C13.7013 17.253 13.5226 17.333 13.3333 17.333H9.33352C9.07087 17.333 8.83221 17.1783 8.72422 16.9384C8.61756 16.697 8.66155 16.4157 8.83754 16.2211L14.4359 10.0001L8.83754 3.78041C8.66155 3.58442 8.61622 3.3031 8.72422 3.06311C8.83221 2.82179 9.07087 2.66713 9.33352 2.66713H13.3333C13.5226 2.66713 13.7013 2.74846 13.8293 2.88712L19.829 9.55343C20.0569 9.80675 20.0569 10.1934 19.829 10.4454Z"
+                      fill="#FBB453"
+                    ></path>
+                    <path
+                      d="M11.1628 10.4454L5.16314 17.1117C5.03514 17.253 4.85649 17.333 4.66716 17.333H0.66738C0.404728 17.333 0.166074 17.1783 0.0580799 16.9384C-0.048581 16.697 -0.00458339 16.4157 0.171407 16.2211L5.76977 10.0001L0.171407 3.78041C-0.00458339 3.58442 -0.0499143 3.3031 0.0580799 3.06311C0.166074 2.82179 0.404728 2.66713 0.66738 2.66713H4.66716C4.85649 2.66713 5.03514 2.74846 5.16314 2.88712L11.1628 9.55343C11.3908 9.80675 11.3908 10.1934 11.1628 10.4454Z"
+                      fill="#DBDBDB"
+                    ></path>
+                  </svg>
+                  <p>
+                    Teacher Uploaded Resources or references such as a reading,
+                    poem, or critical source
+                  </p>
+                </div>
+                <div class="subject-detail">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                  >
+                    <path
+                      d="M19.829 10.4454L13.8293 17.1117C13.7013 17.253 13.5226 17.333 13.3333 17.333H9.33352C9.07087 17.333 8.83221 17.1783 8.72422 16.9384C8.61756 16.697 8.66155 16.4157 8.83754 16.2211L14.4359 10.0001L8.83754 3.78041C8.66155 3.58442 8.61622 3.3031 8.72422 3.06311C8.83221 2.82179 9.07087 2.66713 9.33352 2.66713H13.3333C13.5226 2.66713 13.7013 2.74846 13.8293 2.88712L19.829 9.55343C20.0569 9.80675 20.0569 10.1934 19.829 10.4454Z"
+                      fill="#FBB453"
+                    ></path>
+                    <path
+                      d="M11.1628 10.4454L5.16314 17.1117C5.03514 17.253 4.85649 17.333 4.66716 17.333H0.66738C0.404728 17.333 0.166074 17.1783 0.0580799 16.9384C-0.048581 16.697 -0.00458339 16.4157 0.171407 16.2211L5.76977 10.0001L0.171407 3.78041C-0.00458339 3.58442 -0.0499143 3.3031 0.0580799 3.06311C0.166074 2.82179 0.404728 2.66713 0.66738 2.66713H4.66716C4.85649 2.66713 5.03514 2.74846 5.16314 2.88712L11.1628 9.55343C11.3908 9.80675 11.3908 10.1934 11.1628 10.4454Z"
+                      fill="#DBDBDB"
+                    ></path>
+                  </svg>
+                  <p>Teacher Uploaded assets</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+            <button type="button" class="btn subject-details-btn">
+              Try It Now
+            </button>
+            <button type="button" class="btn-light subject-details-btn-two">
+              How It Works
+            </button>
+         
+        </section>
+        <!-- End of testimonials section -->
+      </main>
+      <!-- End of main container -->
+      <!-- Page Footer -->
+      <footer>
+        <nav class="footer-nav">
+          <div>
+            <a href="teyake.com" class="footer-logo"><img src="./assets/teyake_white_fill.png" class="logo"/></a>
+            <ul class="p-0">
+              <li><a href="#">Teacher Sign In</a></li>
+              <li><a href="#exam-key">Student Exam Key</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-menu">
+            <h3>Menu</h3>
+            <ul class="p-0">
+              <li><a href="">Home</a></li>
+              <li><a href="">How it works</a></li>
+              <li><a href="">Free Trial</a></li>
+              <li><a href="">About</a></li>
+              <li><a href="">Support</a></li>
+              <li><a href="">Testimonials</a></li>
+              <li><a href="">Privacy Center</a></li>
+              <li><a href="">Video Training</a></li>
+              <li><a href="">Cheating</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="foot-section">
+          <div>Copyright &copy; <span id="current-year"></span> - Teyake.com</div>
+          <a href="#top" class="up-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                clip-rule="evenodd"
+              />
+          </a>
+          </button>
+        </div>
+      </footer>
+      <!-- End of footer -->
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
