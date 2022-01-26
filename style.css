@@ -130,6 +130,7 @@ a {
   opacity: 0;
   height: 100vh;
   z-index: 1000;
+  top: 91px;
 }
 .sidebar-head {
   padding: 1.5rem 2.5rem;

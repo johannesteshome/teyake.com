@@ -18,25 +18,54 @@ window.onscroll = function () {
     deskNav.classList.remove("bg-blue");
   }
 };
+const menuIcon = `<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+>
+  <path
+    fill-rule="evenodd"
+    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+    clip-rule="evenodd"
+  /></svg
+>`;
 
-let menuBtn = document.querySelector(".menu-btn");
-let menuCloseBtn = document.querySelector(".menu-close-btn");
-let sideBar = document.querySelector(".sidebar");
+// <span class="menu-close-btn">
+// </span>
+const closeIcon = `
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+</svg>`;
 
-let closeSidebar = function () {
+const menuBtn = document.querySelector(".menu-btn");
+// const menuCloseBtn = document.querySelector(".menu-close-btn");
+const sideBar = document.querySelector(".sidebar");
+const header = document.querySelector("header");
+
+let sidebarOpen = false;
+
+const openSidebar = function () {
+  sideBar.style.width = "100%";
+  sideBar.style.opacity = "1";
+  header.classList.remove("transparent");
+  header.style.backgroundColor = "rgba(19, 41, 74, 1)";
+  document.querySelector("body").classList.add("overflow-hidden");
+  sidebarOpen = true;
+  menuBtn.innerHTML = closeIcon;
+};
+const closeSidebar = function () {
   sideBar.style.width = "0%";
   sideBar.style.opacity = "0";
-  menuBtn.style.display = "block";
+  header.style.removeProperty("background-color");
+  header.classList.add("transparent");
   document.querySelector("body").classList.remove("overflow-hidden");
+  sidebarOpen = false;
+  menuBtn.innerHTML = menuIcon;
 };
 
 menuBtn.addEventListener("click", function () {
-  sideBar.style.width = "100%";
-  sideBar.style.opacity = "1";
-  menuBtn.style.display = "none";
-  document.querySelector("body").classList.add("overflow-hidden");
+  sidebarOpen ? closeSidebar() : openSidebar();
 });
-menuCloseBtn.addEventListener("click", closeSidebar);
 
 document.addEventListener("keydown", function (evt) {
   if (evt.key === "Escape") {
