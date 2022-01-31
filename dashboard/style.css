@@ -1,0 +1,335 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  font-family: "Poppins", sans-serif;
+  --primary-color: rgb(53, 50, 56);
+  --light-text: #d3dedc;
+  --secondary-color: rgb(221, 110, 66);
+  --sidebar-color: #0d363d;
+  --sidebar-width: 15vw;
+}
+
+/* Declaring Utility Classes */
+
+/* .btn {
+  border: none;
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 0.25rem;
+  font-weight: 500;
+  border-radius: 2rem;
+}
+
+.btn-light {
+  background-color: #fff;
+  color: black;
+  border: 1px solid black;
+  border-radius: 2rem;
+} */
+
+.pointer {
+  cursor: pointer;
+}
+
+.accented {
+  color: var(--secondary-color);
+}
+
+.hidden {
+  display: none;
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.flex {
+  display: flex;
+  gap: var(--gap, 0.5rem);
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.gap-1 {
+  --gap: 0.25rem;
+}
+
+.gap-2 {
+  --gap: 0.5rem;
+}
+
+.gap-3 {
+  --gap: 0.75rem;
+}
+
+.gap-4 {
+  --gap: 1rem;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.transition {
+  transition: 200ms ease-in-out;
+}
+
+/* End of Utility Classes */
+
+/* Declaring general tags */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+.container {
+  min-height: 100vh;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding-right: 2rem;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+.logo-box {
+  min-width: var(--sidebar-width);
+  padding-left: min(2rem, 2vw);
+  padding-block: 1rem;
+  min-height: 100%;
+}
+.logo {
+  width: 100px;
+}
+.nav-right {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.nav-right *:hover {
+  color: var(--secondary-color);
+  fill: var(--secondary-color);
+}
+.account {
+  width: 50px;
+  fill: white;
+}
+main {
+  display: flex;
+  height: 100%;
+}
+.sidebar {
+  min-width: var(--sidebar-width);
+  color: white;
+  min-height: 100vh;
+  position: sticky;
+}
+
+.list-item {
+  padding-block: 1rem;
+  padding-left: min(2rem, 2vw);
+  transition: 150ms ease-in-out;
+}
+.list-item:hover {
+  background-color: rgb(221, 110, 66, 0.8);
+}
+.list-item.active {
+  background-color: rgb(221, 110, 66, 0.8);
+}
+
+/* End of General Tags */
+
+/* Dashboard Home Styles */
+.dashboard-home {
+  width: 85vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stat-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 70%;
+  gap: 1rem;
+  margin-top: 5rem;
+}
+
+.stat-container svg {
+  fill: black;
+}
+.stat-card {
+  width: max(10vw, 15rem);
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #f5f5f5;
+  gap: 1rem;
+  transition: 200ms linear;
+  box-shadow: 0px 5px 10px -10px;
+}
+.stat-card:hover {
+  background: #e6e6e6;
+  transform: scale(105%);
+}
+
+.center-content * {
+  max-width: 85vw;
+}
+
+.center-content {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.active-exams {
+  width: max(40rem, 60vw);
+  box-shadow: 1px 1px 10px -5px;
+}
+.active-exams h1 {
+  padding-block: 2rem;
+}
+.exam-list-head {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  place-items: center;
+  padding-block: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+.exam-tile {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding-block: 1rem;
+  border-bottom: 1px solid lightgray;
+  transition: 100ms linear;
+}
+.exam-tile:hover {
+  background-color: #f5f5f5;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-block: 2rem;
+}
+#add-btn {
+  border: 2px solid var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
+  padding: 0.5rem 2rem;
+  border-radius: 1.5rem;
+  width: 10rem;
+  margin: 0 auto;
+}
+#add-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* End of dashboard styles */
+
+/* Exam List styles */
+.exam-list {
+  width: 100%;
+}
+.all-exams {
+  width: max(40rem, 60vw);
+  box-shadow: 1px 1px 10px -5px;
+}
+.all-exams h1 {
+  padding-block: 2rem;
+}
+
+.search-input {
+  margin-bottom: 2rem;
+  display: flex;
+}
+#search-bar {
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+}
+#search-bar:focus {
+  outline: none;
+  border: 1px solid var(--secondary-color);
+}
+#search-btn {
+  padding: 0.5rem 2rem;
+  border-radius: 0;
+  border: none;
+  background-color: var(--secondary-color);
+  color: white;
+  transition: 100ms linear;
+}
+#search-btn:hover {
+  background-color: var(--primary-color);
+}
+/* End of exam list styles */
+
+/* Add Exam Styles */
