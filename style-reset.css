@@ -24,6 +24,13 @@ ul[role="list"],
 ol[role="list"] {
   list-style: none;
 }
+ul {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
 /* Set core root defaults */
 html:focus-within {
