@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="profile_style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <h2 id="head">My Profile</h2>
+        <div class="paded">
+          <div>
+            <label for="name">Name </label><br />
+            <input
+              type="text"
+              name="name"
+              id="txt"
+              class="text"
+              required
+            /><br />
+            <button type="button" name="name" id="btn" class="btn">Edit</button>
+          </div>
+
+          <br />
+          <div>
+            <label for="email">Email </label><br />
+            <input
+              type="email"
+              name="email"
+              id="txt"
+              class="text"
+              required
+              placeholder="Email"
+              min="6"
+              max="32"
+            />
+            <br />
+            <input
+              type="button"
+              name="name"
+              id="btn"
+              class="btn"
+              value="Edit"
+            />
+          </div>
+
+          <br />
+          <div>
+            <label for="password">password</label><br />
+            <input
+              type="button"
+              name="password"
+              id="btn"
+              class="btn"
+              value="Change password"
+            />
+            <br /><br />
+            <input
+              type="button"
+              name="password"
+              id="btn"
+              class="btn"
+              value="Forgot my password"
+            />
+          </div>
+
+          <br />
+          <div>
+            <h3>Sorting</h3>
+            <p>
+              this setting decides how students are sorted in list. This only
+              saved in your current browser.
+            </p>
+            <select id="select">
+              <option>First name</option>
+              <option>Last name</option>
+              <option>ID</option>
+            </select>
+          </div>
+
+          <br />
+          <div>
+            <label for="document">Document</label><br />
+            <input
+              type="button"
+              name="document"
+              id="btn"
+              class="btn"
+              value="Use Terms"
+            /><br /><br />
+            <input
+              type="button"
+              name="document"
+              id="btn"
+              class="btn"
+              value="Privecy Terms"
+            />
+          </div>
+
+          <br />
+          <div>
+            <h3><img src="images/email.png" width="16px" /> Newsletter</h3>
+            <p>you allow Newsletter</p>
+            <input type="button" value="change" class="btn" />
+          </div>
+
+          <br />
+          <div>
+            <h3>Most recent student submission</h3>
+            <p>Show the last submissions among the exams you have created</p>
+            <input type="button" value="show" class="btn" />
+          </div>
+
+          <br />
+          <div>
+            <h3>Trash can</h3>
+            <p>Deleted students and exams can be restored for 20 days</p>
+            <input
+              type="button"
+              value="show recently Deleted data"
+              class="btn"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
