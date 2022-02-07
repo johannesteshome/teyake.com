@@ -1,0 +1,154 @@
+html {
+  scroll-behavior: smooth;
+  min-height: 100vh;
+}
+li {
+  list-style: none;
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+svg {
+  width: 20px;
+}
+
+.container {
+  min-width: 100%;
+  min-height: 100vh;
+  background: url("../assets/backdrop2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.enter-exam-input {
+  width: 90%;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  z-index: 1;
+  /* margin-top: 1.5rem; */
+}
+#exam-key {
+  background-color: rgb(231, 230, 230);
+  width: 90%;
+  height: 2.5rem;
+  border-radius: 2rem;
+  flex: 1;
+  padding-inline: 1rem;
+  font-size: 12px;
+  border: none;
+}
+.enter-exam-btn {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: max(8rem, 35vw);
+  border-radius: 1.5rem;
+  font-size: 12px;
+  height: 80%;
+  padding-inline: 3rem;
+  top: 50%;
+  transform: translatey(-50%);
+  align-self: flex-end;
+  margin-right: 0.25rem;
+  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: #fff;
+  transition: 200ms ease-in-out;
+}
+.enter-exam-btn:hover {
+  background-color: #fff;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+.enter-exam-label {
+  margin-top: 0.5rem;
+}
+
+.logo {
+  width: 100px;
+}
+.header {
+  transition: 250ms ease-in-out;
+  z-index: 100;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  /* position: absolute; */
+  /* top: 0; */
+  justify-content: space-between;
+  padding-inline: 3rem;
+}
+.header-left {
+  /* min-width: 50%; */
+  padding-left: min(3.5rem, 2.5vw);
+}
+.header-right {
+  /* min-width: 50%; */
+  padding-left: 1rem;
+}
+
+.header-left .logo {
+  margin: 1rem 1rem 0 1rem;
+}
+.primary-nav {
+  padding-inline: 1rem;
+}
+.primary-nav > * {
+  padding: 0.5rem;
+}
+.primary-nav li:hover {
+  border-bottom: 2px solid #fff;
+}
+.nav-active {
+  border-bottom: 2px solid #fff;
+}
+.enter-exam-head {
+  width: min(30rem, 25vw);
+  display: flex;
+  justify-content: center;
+}
+.enter-exam-head-btn {
+  width: min(10rem, 8vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.enter-exam-intro {
+  display: none;
+}
+.sign-in button {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0.5rem min(1.25rem, 1vw);
+  border-radius: 2rem;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  transition: 250ms ease-in-out;
+}
+.sign-in button:hover {
+  color: var(--secondary-color);
+  background-color: white;
+}
+.sign-in p {
+  font-weight: 500;
+}
+
+main {
+  height: 85vh;
+  width: 100%;
+  z-index: 1000;
+}
+
+.auth-box {
+  width: 500px;
+  aspect-ratio: 1;
+  background-color: white;
+}

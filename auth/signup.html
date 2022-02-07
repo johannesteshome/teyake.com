@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up | Teyake</title>
+    <link rel="stylesheet" href="../style-reset.css" />
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+  <body>
+    <div class="container text-white">
+      <div class="header">
+        <div class="header-left">
+          <img src="../assets/teyake_white_fill.png" class="logo" />
+          <nav>
+            <ul class="primary-nav flex">
+              <li class=""><a href="#">Home</a></li>
+              <li class="nav-active"><a href="#">Sign Up</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header-right flex items-center">
+          <div class="sign-in flex gap-4">
+            <button type="button">Sign In</button>
+            <!-- <button type="button">Sign Up</button> -->
+          </div>
+          <!-- Exam Key input Section -->
+          <div class="flex flex-col items-center gap-2">
+            <form
+              action="#"
+              class="enter-exam-head flex text-center items-center"
+            >
+              <div class="enter-exam-input">
+                <input
+                  type="text"
+                  name="exam-key"
+                  id="exam-key"
+                  placeholder="Enter Exam Key"
+                />
+                <button
+                  type="submit"
+                  class="btn enter-exam-btn enter-exam-head-btn"
+                >
+                  Next
+                </button>
+              </div>
+            </form>
+          </div>
+          <!-- End of exam key input section -->
+        </div>
+      </div>
+      <main class="flex items-center justify-center">
+        <div class="auth-box flex flex-col items-center justify-center">
+          <form class="text-primary flex flex-col gap-4">
+            <label for="fullname" class="flex gap-4 items-center">
+              Full Name
+              <input
+                type="text"
+                class="auth-input"
+                placeholder="Enter your full name"
+                id="fullname-input"
+              />
+            </label>
+            <label for="email" class="flex gap-4 items-center">
+              Email
+              <input
+                type="email"
+                class="auth-input"
+                name=""
+                id="email-input"
+                placeholder="Enter your Email"
+              />
+            </label>
+            <label for="phone" class="flex gap-4 items-center">
+              Phone Number
+              <input
+                type="text"
+                class="auth-input"
+                name=""
+                id="phone-input"
+                placeholder="Enter your phone number"
+              />
+            </label>
+            <label for="institution" class="flex gap-4 items-center">
+              Institution
+              <input
+                type="text"
+                class="auth-input"
+                name=""
+                id="institution-input"
+                placeholder="Enter your institution"
+              />
+            </label>
+            <button type="submit" id="signup-btn">Sign Up</button>
+          </form>
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="signup.js" type="module"></script>
+</html>
