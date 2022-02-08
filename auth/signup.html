@@ -15,14 +15,14 @@
           <img src="../assets/teyake_white_fill.png" class="logo" />
           <nav>
             <ul class="primary-nav flex">
-              <li class=""><a href="#">Home</a></li>
+              <li class=""><a href="../index.html">Home</a></li>
               <li class="nav-active"><a href="#">Sign Up</a></li>
             </ul>
           </nav>
         </div>
         <div class="header-right flex items-center">
           <div class="sign-in flex gap-4">
-            <button type="button">Sign In</button>
+            <a href="signin.html"><button type="button">Sign In</button></a>
             <!-- <button type="button">Sign Up</button> -->
           </div>
           <!-- Exam Key input Section -->
@@ -50,7 +50,7 @@
           <!-- End of exam key input section -->
         </div>
       </div>
-      <main class="flex items-center justify-center">
+      <main class="sign-up-page flex items-center justify-center">
         <div class="auth-box flex flex-col items-center justify-center">
           <form class="text-primary flex flex-col gap-4">
             <label for="fullname" class="flex gap-4 items-center">
@@ -60,6 +60,24 @@
                 class="auth-input"
                 placeholder="Enter your full name"
                 id="fullname-input"
+              />
+            </label>
+            <label for="fullname" class="flex gap-4 items-center">
+              Username
+              <input
+                type="text"
+                class="auth-input"
+                placeholder="Enter your full name"
+                id="username-input"
+              />
+            </label>
+            <label for="fullname" class="flex gap-4 items-center">
+              Password
+              <input
+                type="text"
+                class="auth-input"
+                placeholder="Enter your full name"
+                id="password-input"
               />
             </label>
             <label for="email" class="flex gap-4 items-center">

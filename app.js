@@ -45,17 +45,17 @@ const header = document.querySelector("header");
 let sidebarOpen = false;
 
 const openSidebar = function () {
-  sideBar.style.width = "100%";
-  sideBar.style.opacity = "1";
+  sideBar.style.transform = "translateX(0)";
+  // sideBar.style.opacity = "1";
   header.classList.remove("transparent");
-  header.style.backgroundColor = "rgba(19, 41, 74, 1)";
+  header.style.backgroundColor = "rgba(53, 50, 56,1)";
   document.querySelector("body").classList.add("overflow-hidden");
   sidebarOpen = true;
   menuBtn.innerHTML = closeIcon;
 };
 const closeSidebar = function () {
-  sideBar.style.width = "0%";
-  sideBar.style.opacity = "0";
+  sideBar.style.transform = "translateX(100%)";
+  // sideBar.style.opacity = "0";
   header.style.removeProperty("background-color");
   header.classList.add("transparent");
   document.querySelector("body").classList.remove("overflow-hidden");
@@ -72,6 +72,53 @@ document.addEventListener("keydown", function (evt) {
     closeSidebar();
   }
 });
+
+
+const enterSidebarBtn = document.querySelector("#enter-exam-sidebar-btn");
+const enterHeadBtn = document.querySelector("#enter-exam-head-btn");
+const enterIntroBtn = document.querySelector("#enter-exam-intro-btn");
+
+const enterSidebarField = document.querySelector("#exam-key-sidebar");
+const enterIntroField = document.querySelector("#exam-key-intro");
+const enterHeadField = document.querySelector("#exam-key-header");
+
+let studKey = "-1";
+
+enterSidebarBtn.addEventListener("click", function(evt){
+  evt.preventDefault();
+  if(enterSidebarField.value == ""){
+    alert("enter a key");
+    return;
+  }
+  studKey = enterSidebarField.value;
+  console.log(studKey);
+  localStorage.setItem("studKey", studKey);
+
+  window.open("takeexam/takeexam.html", "_parent");
+})
+enterHeadBtn.addEventListener("click", function(evt){
+  evt.preventDefault();
+  if(enterHeadField.value == ""){
+    alert("enter a key");
+    return;
+  }
+  studKey = enterHeadField.value;
+  localStorage.setItem("studKey", studKey);
+  console.log(studKey);
+  window.open("takeexam/takeexam.html", "_parent");
+})
+enterIntroBtn.addEventListener("click", function(evt){
+  evt.preventDefault();
+  if(enterIntroField.value == ""){
+    alert("enter a key");
+    return;
+  }
+  studKey = enterIntroField.value;
+localStorage.setItem("studKey", studKey);
+console.log(studKey);
+  window.open("takeexam/takeexam.html", "_parent");
+})
+
 
 const subjects = [
   {

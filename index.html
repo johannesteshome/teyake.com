@@ -16,8 +16,8 @@
         <form action="#" class="enter-exam-sidebar flex flex-col">
           <label for="exam-key" class="enter-exam-label font-semibold">Student</label>
           <div class="enter-exam-input">
-            <input type="text" name="exam-key" id="exam-key" placeholder="Enter Exam Key"/>
-            <button type="submit" class="btn enter-exam-btn">
+            <input type="text" name="exam-key" class="exam-key" id="exam-key-sidebar" placeholder="Enter Exam Key"/>
+            <button type="submit" class="btn enter-exam-btn" id="enter-exam-sidebar-btn">
               Next
             </button>
           </div>
@@ -75,8 +75,8 @@
         <div class="header-right flex items-center justify-between">
           <div class="sign-in flex flex-col items-center justify-center gap-1">
             <div class="flex gap-4">
-              <button type="button">Sign In</button>
-              <button type="button">Sign Up</button>
+              <a href="auth/signin.html"><button type="button">Sign In</button></a>
+              <a href="auth/signup.html"><button type="button">Sign Up</button></a>
             </div>
             <p class="text-center">Teachers</p>
           </div>
@@ -84,8 +84,8 @@
           <div class="flex flex-col items-center gap-2">
             <form action="#" class="enter-exam-head flex text-center">
               <div class="enter-exam-input">
-                <input type="text" name="exam-key" id="exam-key" placeholder="Enter Exam Key"/>
-                <button type="submit" class="btn enter-exam-btn enter-exam-head-btn">
+                <input type="text" name="exam-key" id="exam-key-header" class="exam-key" placeholder="Enter Exam Key"/>
+                <button type="submit" class="btn enter-exam-btn enter-exam-head-btn" id="enter-exam-head-btn">
                   Next
                 </button>
               </div>
@@ -103,8 +103,8 @@
           <!-- Exam Key input section -->
           <form action="#" class="enter-exam-intro flex flex-col items-center text-center">
             <div class="enter-exam-input">
-              <input type="text" name="exam-key" id="exam-key" placeholder="Enter Exam Key"/>
-              <button type="submit" class="btn enter-exam-btn">
+              <input type="text" name="exam-key" id="exam-key-intro" class="exam-key" placeholder="Enter Exam Key"/>
+              <button type="submit" class="btn enter-exam-btn" id="enter-exam-intro-btn">
                 Next
               </button>
             </div>

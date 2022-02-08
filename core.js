@@ -7,16 +7,27 @@ class Student {
     this.answers = [];
   }
 }
+
+let date = new Date();
+
 class Exam {
   constructor(name) {
+    this.teacherID = 0;
     this.name = name;
     this.questions = [];
     this.key = 0;
+    this.date = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+    this.status = "open";
+  }
+  toggleExam(){
+    this.status = this.status == "open"? "closed":"open";
   }
 }
 
 class Teacher {
-  constructor(name, phone, email, institution, id) {
+  constructor(name, phone, email, institution, id, username, password) {
+    this.username = username;
+    this.password = password;
     this.name = name;
     this.phone = phone;
     this.email = email;

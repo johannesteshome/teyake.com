@@ -1,16 +1,65 @@
-import { Student, Exam } from "../core.js";
 ("use strict");
+import { Student, Exam, Teacher } from "../core.js";
+
+let currentSignin = -1;
+if(!!localStorage.getItem("current"));
+currentSignin = localStorage.getItem("current");
+// console.log(currentSignin);
+
+if (currentSignin === -1 || currentSignin === 0) {
+  alert("please login");
+  console.log("not logged in");
+}
 
 let allExams = [];
 if (!!localStorage.getItem("exams")) {
   allExams = JSON.parse(localStorage.getItem("exams"));
 }
 let totalExams = allExams.length;
+
 let allStudents = [];
 if (!!localStorage.getItem("students")) {
   allStudents = JSON.parse(localStorage.getItem("exams"));
 }
 let totalStudents = allStudents.length;
+
+let allTeachers = [];
+if(!!localStorage.getItem("teachers")){
+  allTeachers = JSON.parse(localStorage.getItem("teachers"));
+}
+let currentTeacher = new Teacher();
+for(let i=0;i<allTeachers.length;i++){
+  if(allTeachers.length == 0)break;
+  if(allTeachers[i].id == currentSignin){
+    currentTeacher = allTeachers[i];
+    break;
+  }
+}
+
+let currentTeacherExams = allExams.filter((item) =>{
+  return item.teacherID === Number(currentSignin);
+})
+
+currentTeacherExams.forEach(exam =>{
+  let cont = document.createElement("div");
+  cont.className = "exam-tile";
+  cont.innerHTML = 
+  `<p class="exam-name">${exam.name}</p>
+  <p class="exam-key">${exam.key}</p>
+  <p class="date-created">${exam.date}</p>
+  <p class="status">${exam.status}</p>`;
+
+  document.querySelector(".exam-tile-container").appendChild(cont);
+})
+
+/* <div class="exam-tile">
+<p class="exam-name">Math Quiz</p>
+<p class="exam-key">44353</p>
+<p class="date-created">1/31/2022</p>
+<p class="status">Open</p>
+</div> */
+
+console.log(currentTeacherExams);
 
 const dashboardHome = document.querySelector(".dashboard-home");
 const examListPage = document.querySelector(".exam-list");
@@ -28,7 +77,7 @@ window.onload = function () {
 
 let pages = [dashboardHome, examListPage, addExamContainer];
 // Page Structure
-document.querySelectorAll(".list-item").forEach((link, i) => {
+links.forEach((link, i) => {
   link.addEventListener("click", function () {
     links.forEach((el) => {
       el.classList.remove("active");
@@ -40,6 +89,17 @@ document.querySelectorAll(".list-item").forEach((link, i) => {
     link.classList.add("active");
   });
 });
+
+document.querySelector("#add-btn").addEventListener("click", function(){
+  pages.forEach((page) => {
+    page.classList.add("hidden");
+  });
+  links.forEach((el) => {
+    el.classList.remove("active");
+  });
+  pages[2].classList.remove("hidden");
+  links[2].classList.add("active");
+})
 
 //INITIALIZING THE EXAM
 let test = new Exam("");
@@ -62,6 +122,7 @@ document
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     test.key = result;
+    test.teacherID = currentTeacher.id;
     console.log(test);
   });
 
@@ -130,22 +191,27 @@ document
       console.log("null");
       return;
     }
-
-    questionNum++;
-    qnum.textContent = `Question ${questionNum}`;
-    let quests = document.querySelectorAll("#choice-input");
+    let quests = document.querySelectorAll(".choice-input");
     // console.log(quests);
     let question = [];
     question.push(questionPrompt.value);
     quests.forEach((q) => {
       question.push(q.value);
     });
+    let checked = false;
     document.querySelectorAll("#choice-item").forEach((answer, i) => {
       if (answer.childNodes[0].checked) {
         question[6] = i + 1;
+        checked = true;
       }
       //   console.log(question);
     });
+    if (!checked) {
+      alert("choose an answer");
+      return;
+    }
+    questionNum++;
+    qnum.textContent = `Question ${questionNum}`;
     test.questions.push(question);
     console.log(test);
     document.querySelector(".write-exam-content").reset();
@@ -158,8 +224,9 @@ document
 
 document.getElementById("finalize-btn").addEventListener("click", function () {
   allExams.push(test);
+  currentTeacher.exams.push(test.key);
+  localStorage.setItem("teachers", JSON.stringify(allTeachers));
   localStorage.setItem("exams", JSON.stringify(allExams));
-  totalExams++;
   test = null;
-  document.querySelectorAll(".list-item")[0].click();
+  window.open("dashboard.html", "_parent");
 });
