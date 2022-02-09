@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="form-container">
+          <div class="sign-up-form">
+            <h1>welcome to teyake.com</h1>
+            <h2>register an account</h2>
+              <div class="progress-container">
+                  <div class="progress" id="progress"></div>
+                  <div class="progress-step current-progress"><span class="num num-active">1</span>User</div>
+                  <div class="progress-step"><span class="num">2</span>Details</div>
+              </div>
+  
+            <h2>REGISTER NEW ACCOUNT</h2>
+            <div class="user-option">           
+              <h3>User</h3>
+              <form action="">
+                <ul class="user-type-container">
+                  <li>
+                    <input type="radio" name="user-type" class="user-type" id="user-type-teacher">
+                     <label for="user-type-teacher">Teacher</label>
+                  </li>
+                  <li>
+                    <input type="radio" name="user-type" class="user-type" id="user-type-student">
+                    <label for="user-type-student">Student</label>
+                  </li>
+                </ul>
+                
+     
+               <label for="country">Country: </label>
+               <select name="country" id="country">
+                 <option value="ethiopia">ethiopia</option>
+                 <option value="ethiopia">ethiopia</option>
+                 <option value="ethiopia">ethiopia</option>
+                 <option value="ethiopia">ethiopia</option>
+                 <option value="ethiopia">ethiopia</option>
+                 <option value="ethiopia">ethiopia</option>
+                 <option value="ethiopia">ethiopia</option>
+               </select>
+              </form>
+            </div>
+          </div>
+          <div class="second-form hidden">
+            <form action="">
+              <label for="fullname">Name: </label>
+              <input type="text" name="fullname" id="fullname" required>
+  
+              <label for="phoneNumer">Phone Number: </label>
+              <input type="tel" name="phoneNumber" id="phoneNumber" required>
+  
+              <label for="email">Email:  </label>
+              <input type="email" name="email" id="email" required>
+
+              <label for="dept">Department: </label>
+              <input type="text" name="dept" id="dept" required>
+              
+              
+            </form>
+          </div>
+          <div>
+            <button class="btn-signup" id="pre-signup" disabled>Previous</button>
+           <button class="btn-signup" id="next-signup">Next</button>
+       </div>
+        </div>
+       </main>
+
+       <script src="app.js"></script>
+</body>
+</html>

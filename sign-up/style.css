@@ -1,0 +1,168 @@
+:root{
+    --line-border-fill: #3498db;
+    --line-border-empty:#e0e0e0;
+}
+
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   text-decoration: none;
+   /* border: 1px solid black; */
+}
+
+
+body{
+    min-height: 100vh;
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    border: solid black 1px;
+}
+
+.form-container{
+    background-color: #f6f7fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+
+}
+
+
+.progress-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    position: relative;
+    margin-bottom: 3rem;
+    max-width: 80%;
+    width: 70%;
+    
+}
+
+.progress-step{
+    background-color: #fff;
+    color: #999;
+    padding: 1rem;
+    border : 3px solid var(--line-border-empty);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7rem;
+    height: 3rem;
+    transition: .5s ease-in;
+}
+
+/* .progress::before{
+    content: '';
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: -1;
+} 
+ */
+
+.progress{
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: .5s ease;
+}
+
+.num {
+    border: 2px solid var(--line-border-empty);
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .6s ease;
+}
+
+.progress-step.current-progress{
+    border-color: var(--line-border-fill);
+}
+
+.num.num-active{
+    border-color: var(--line-border-fill);
+}
+
+.btn-signup{
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border-radius: 6px;
+    border: 0;
+    cursor: pointer;
+    padding: .5rem 1rem;
+    margin-top: 1rem;
+    font-size : 1rem;
+}
+.btn-signup:active{
+    transform: scale(.96);
+}
+
+.btn-signup:focus{
+    outline: 0;
+}
+
+.btn-signup:disabled{
+    display: none;
+}
+
+.user-option{
+    padding: .5rem;
+}
+
+h2{
+    margin: 0;
+}
+
+
+ul{
+    list-style: none;
+    padding-bottom: .5rem;
+    margin-top: .5rem;
+}
+
+li{
+    padding: .2rem;
+}
+
+select{
+    outline: none;
+    padding: .5rem;
+    width: 10rem;
+    margin-top: .5rem;
+}
+
+.second-form>form{
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.hidden {
+    display: none;
+}
+
+a{
+    color:black;
+}
