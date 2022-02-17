@@ -58,10 +58,6 @@ main {
   align-items: center;
 }
 
-.hidden {
-  display: none;
-}
-
 #exam-title {
   text-align: center;
   margin-top: 0;
@@ -69,4 +65,23 @@ main {
 }
 #submit-exam {
   align-self: center;
+}
+
+.alert {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+}
+.alert-box {
+  width: 500px;
+  aspect-ratio: 1;
+  background-color: white;
+}
+.hidden {
+  display: none;
 }

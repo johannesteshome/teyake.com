@@ -5,6 +5,7 @@ class Student {
     this.email = email;
     this.examkey = examkey;
     this.answers = [];
+    this.marked = [];
   }
 }
 
@@ -18,9 +19,6 @@ class Exam {
     this.key = 0;
     this.date = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
     this.status = "open";
-  }
-  toggleExam(){
-    this.status = this.status == "open"? "closed":"open";
   }
 }
 

@@ -26,7 +26,7 @@ let totalExams = allExams.length;
 
 let allStudents = [];
 if (!!localStorage.getItem("students")) {
-  allStudents = JSON.parse(localStorage.getItem("exams"));
+  allStudents = JSON.parse(localStorage.getItem("students"));
 }
 let totalStudents = allStudents.length;
 
@@ -38,8 +38,8 @@ if (!!localStorage.getItem("teachers")) {
 if (studKey != "-1") {
   document.querySelector("#exam-key").value = studKey;
 }
-let currentExam;
 let student = new Student();
+let currentExam;
 
 enterBtn.addEventListener("click", function (evt) {
   evt.preventDefault();
@@ -59,7 +59,7 @@ enterBtn.addEventListener("click", function (evt) {
       currentExam = exam;
     }
   });
-  console.log(currentExam);
+  // console.log(currentExam);
   if (!currentExam) {
     alert("Exam does not exist");
   } else {
@@ -71,15 +71,12 @@ enterBtn.addEventListener("click", function (evt) {
     student.examkey = key;
     student.name = studName.value;
     student.answers = new Array(currentExam.questions.length).fill(0);
+    student.marked = new Array(currentExam.questions.length).fill(0);
     showExam();
     document.documentElement.requestFullscreen();
-    document.addEventListener("fullscreenchange", onFullScreenChange, false);
-    document.addEventListener(
-      "webkitfullscreenchange",
-      onFullScreenChange,
-      false
-    );
-    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
+    document.addEventListener("fullscreenchange", onFullScreenChange);
+    document.addEventListener("webkitfullscreenchange", onFullScreenChange);
+    document.addEventListener("mozfullscreenchange", onFullScreenChange);
   }
 });
 
@@ -89,8 +86,13 @@ const onFullScreenChange = function () {
     document.mozFullScreenElement ||
     document.webkitFullscreenElement;
 
+  let i = 0;
+  alert("here");
   if (!fullscreenElement) {
-    alert("warning");
+    console.log("not");
+    alert("Warning: Return to fullscreen");
+  } else {
+    alert("in");
   }
 };
 
@@ -132,3 +134,34 @@ const showExam = function () {
   });
   console.log(student);
 };
+
+document.querySelector("#submit-exam").addEventListener("click", function () {
+  let ansContainer = document.querySelectorAll(".q-container");
+  ansContainer.forEach((question, i) => {
+    question.childNodes.forEach((choice, j) => {
+      if (choice.childNodes[0].checked) {
+        student.answers[i] = j;
+      }
+    });
+  });
+
+  // console.log(student.answers);
+
+  console.log(student.answers);
+  let checking = [];
+  currentExam.questions.forEach((question) => {
+    checking.push(question[6]);
+  });
+  for (let j = 0; j < student.answers.length; j++) {
+    if (student.answers[j] == checking[j]) {
+      student.marked[j] = 1;
+    }
+  }
+  console.log(student.marked);
+  console.log(student.marked.reduce((prev, next) => prev + next));
+  allStudents.push(student);
+  // console.log(allStudents);
+  student = null;
+  localStorage.setItem("students", JSON.stringify(allStudents));
+  // window.open("takeexam.html" ,"_parent");
+});

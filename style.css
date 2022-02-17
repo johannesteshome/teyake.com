@@ -320,7 +320,7 @@ h1 {
 
 .hero {
   width: 100%;
-  background-image: url(assets/hero.jpg);
+  background-image: url(assets/backdrop.jpg);
   min-height: 150px;
   background-position: center;
   background-size: cover;

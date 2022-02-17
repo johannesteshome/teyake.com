@@ -32,18 +32,19 @@
               d="M256 144c-19.72 0-37.55 7.39-50.22 20.82s-19 32-17.57 51.93C191.11 256 221.52 288 256 288s64.83-32 67.79-71.24c1.48-19.74-4.8-38.14-17.68-51.82C293.39 151.44 275.59 144 256 144z"
             />
           </svg>
-          <a href="#" class="transition">Log Out</a>
+          <a href="../index.html" class="transition" id="logout">Log Out</a>
         </div>
       </header>
       <main>
         <nav class="sidebar bg-primary">
           <div class="nav-list">
             <ul>
-              <li class="list-item active"><a href="#">Home</a></li>
+              <li class="list-item active">
+                <a href="#">Home</a>
+              </li>
               <li class="list-item"><a href="#">Exam List</a></li>
               <li class="list-item"><a href="#">New Exam</a></li>
               <li class="list-item"><a href="#">Results</a></li>
-              <li class="list-item"><a href="#">Student List</a></li>
             </ul>
           </div>
         </nav>
@@ -126,20 +127,7 @@
                   <p class="date-created">Date Created</p>
                   <p class="status">Status</p>
                 </div>
-                <div class="exam-tile-container">
-                  <!-- <div class="exam-tile">
-                    <p class="exam-name">Math Quiz</p>
-                    <p class="exam-key">44353</p>
-                    <p class="date-created">1/31/2022</p>
-                    <p class="status">Open</p>
-                  </div>
-                  <div class="exam-tile">
-                    <p class="exam-name">Math Quiz</p>
-                    <p class="exam-key">44353</p>
-                    <p class="date-created">1/31/2022</p>
-                    <p class="status">Open</p>
-                  </div> -->
-                </div>
+                <div class="exam-tile-container"></div>
                 <div class="btn-container">
                   <button
                     type="button"
@@ -172,48 +160,7 @@
                   <p class="date-created">Date Created</p>
                   <p class="status">Status</p>
                 </div>
-                <div class="exam-tile">
-                  <p class="exam-name">Math Quiz</p>
-                  <p class="exam-key">44353</p>
-                  <p class="date-created">1/31/2022</p>
-                  <p class="status">Open</p>
-                </div>
-                <div class="exam-tile">
-                  <p class="exam-name">Math Quiz</p>
-                  <p class="exam-key">44353</p>
-                  <p class="date-created">1/31/2022</p>
-                  <p class="status">Open</p>
-                </div>
-                <div class="exam-tile">
-                  <p class="exam-name">Math Quiz</p>
-                  <p class="exam-key">44353</p>
-                  <p class="date-created">1/31/2022</p>
-                  <p class="status">Open</p>
-                </div>
-                <div class="exam-tile">
-                  <p class="exam-name">Math Quiz</p>
-                  <p class="exam-key">44353</p>
-                  <p class="date-created">1/31/2022</p>
-                  <p class="status">Open</p>
-                </div>
-                <div class="exam-tile">
-                  <p class="exam-name">Math Quiz</p>
-                  <p class="exam-key">44353</p>
-                  <p class="date-created">1/31/2022</p>
-                  <p class="status">Open</p>
-                </div>
-                <div class="exam-tile">
-                  <p class="exam-name">Math Quiz</p>
-                  <p class="exam-key">44353</p>
-                  <p class="date-created">1/31/2022</p>
-                  <p class="status">Open</p>
-                </div>
-                <div class="exam-tile">
-                  <p class="exam-name">Math Quiz</p>
-                  <p class="exam-key">44353</p>
-                  <p class="date-created">1/31/2022</p>
-                  <p class="status">Open</p>
-                </div>
+                <div class="all-exam-container"></div>
               </div>
             </div>
           </div>
@@ -427,13 +374,39 @@
                   <div class="choice-container"></div>
                 </form>
               </div>
+              <button id="cancel-exam" type="button">Cancel Exam</button>
+            </div>
+            <div class="preview-exam hidden">
+              <div class="preview-content">
+                <h2 class="text-center">Exam Preview</h2>
+                <div class="preview-btns flex gap-4">
+                  <button type="button" id="done-preview">Done</button>
+                  <button type="button" id="cancel-preview">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="results-page flex flex-col items-center justify-center">
+            <div class="center-content">
+              <div class="student-results">
+                <h1 class="text-center bg-primary text-white">
+                  Student Results
+                </h1>
+                <div class="result-list-head">
+                  <p class="student-name">Student Name</p>
+                  <p class="student-id">Student ID</p>
+                  <p class="exam-name">Exam Name</p>
+                  <p class="score">Score</p>
+                </div>
+                <div class="result-tile-container"></div>
+              </div>
             </div>
           </div>
         </div>
       </main>
-      <div class="modal">
+      <!-- <div class="modal">
         
-      </div>
+      </div> -->
     </div>
   </body>
   <script src="app.js" type="module"></script>

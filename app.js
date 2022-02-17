@@ -1,6 +1,7 @@
 "use strict";
 let mobileNav = document.querySelector("header");
 let deskNav = document.querySelector(".header");
+
 window.onscroll = function () {
   if (
     document.body.scrollTop >= 50 ||
@@ -73,7 +74,6 @@ document.addEventListener("keydown", function (evt) {
   }
 });
 
-
 const enterSidebarBtn = document.querySelector("#enter-exam-sidebar-btn");
 const enterHeadBtn = document.querySelector("#enter-exam-head-btn");
 const enterIntroBtn = document.querySelector("#enter-exam-intro-btn");
@@ -84,9 +84,9 @@ const enterHeadField = document.querySelector("#exam-key-header");
 
 let studKey = "-1";
 
-enterSidebarBtn.addEventListener("click", function(evt){
+enterSidebarBtn.addEventListener("click", function (evt) {
   evt.preventDefault();
-  if(enterSidebarField.value == ""){
+  if (enterSidebarField.value == "") {
     alert("enter a key");
     return;
   }
@@ -95,10 +95,10 @@ enterSidebarBtn.addEventListener("click", function(evt){
   localStorage.setItem("studKey", studKey);
 
   window.open("takeexam/takeexam.html", "_parent");
-})
-enterHeadBtn.addEventListener("click", function(evt){
+});
+enterHeadBtn.addEventListener("click", function (evt) {
   evt.preventDefault();
-  if(enterHeadField.value == ""){
+  if (enterHeadField.value == "") {
     alert("enter a key");
     return;
   }
@@ -106,19 +106,18 @@ enterHeadBtn.addEventListener("click", function(evt){
   localStorage.setItem("studKey", studKey);
   console.log(studKey);
   window.open("takeexam/takeexam.html", "_parent");
-})
-enterIntroBtn.addEventListener("click", function(evt){
+});
+enterIntroBtn.addEventListener("click", function (evt) {
   evt.preventDefault();
-  if(enterIntroField.value == ""){
+  if (enterIntroField.value == "") {
     alert("enter a key");
     return;
   }
   studKey = enterIntroField.value;
-localStorage.setItem("studKey", studKey);
-console.log(studKey);
+  localStorage.setItem("studKey", studKey);
+  console.log(studKey);
   window.open("takeexam/takeexam.html", "_parent");
-})
-
+});
 
 const subjects = [
   {
