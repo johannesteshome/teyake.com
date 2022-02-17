@@ -1,0 +1,97 @@
+:root{
+    --line-border:#accfbede;
+    --button-color:rgba(91, 208, 101, 0.433);
+    --textfield-color: rgb(112, 121, 64);
+}
+
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   text-decoration: none;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0%;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:max(18rem, 50%);
+}
+
+.login-container{
+    border: .2rem solid var(--line-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.inputs{
+    flex: 1;
+}
+input{
+    margin-top: 0.5rem;
+}
+
+#login-email{
+    margin-bottom: 0.5rem;
+}
+
+ .login-container > a{
+    text-decoration: none;
+   padding:0;
+   margin: 0;
+}
+button:hover{
+    background-color: aquamarine;
+}
+button:active{
+    transform: scale(.99);
+}
+
+input{
+    padding: .5rem;
+    border-radius: 1em;
+    margin-bottom: .5rem;
+    width: 100%;
+    border-style: none;
+    color:#fff;
+    background-color: var(--textfield-color);
+}
+
+input:focus{
+    outline: none;
+}
+
+button{
+    border: none;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    width: 100%;
+    padding: .5rem;
+    background-color: var(--button-color);
+}
+
+h1{
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+}
+
+::placeholder{
+    color:#e0e0e0;
+}
+
