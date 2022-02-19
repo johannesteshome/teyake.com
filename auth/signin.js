@@ -37,7 +37,7 @@ signinBtn.addEventListener("click", function (evt) {
     console.log("Successful");
     window.open("../dashboard/dashboard.html", "_parent");
   } else {
-    console.log("Unsuccessful");
+    document.getElementById("errorMsg").innerText =
+      "Incorrect Username or Password.";
   }
 });
-

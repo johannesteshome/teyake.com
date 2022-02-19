@@ -155,9 +155,155 @@ svg {
 .auth-box {
   width: 500px;
   aspect-ratio: 1;
-  background-color: white;
+  background-color: rgba(160, 150, 150, 0.823);
+  position: relative;
+}
+
+.auth-input {
+  border-radius: 0.5rem;
+  width: 20rem;
+  padding: 0.5rem;
+  border: none;
+  font-size: small;
+  flex: 1;
+}
+
+.auth-input:focus {
+  outline: solid 1px var(--secondary-color);
 }
 
 .hidden {
   display: none;
+}
+
+:root {
+  --line-border-fill: #3498db;
+  --line-border-empty: #e0e0e0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  text-decoration: none;
+  /* border: 1px solid black; */
+}
+
+body {
+  min-height: 100vh;
+}
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  border: solid black 1px;
+}
+
+.signup-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  top: 1rem;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  top: 3rem;
+  margin-bottom: 3rem;
+  padding: 0%;
+  max-width: 80%;
+}
+
+h2 {
+  text-transform: capitalize;
+  top: 1rem;
+}
+
+.progress-step {
+  background-color: #fff;
+  color: #999;
+  padding: 1rem;
+  border: 3px solid var(--line-border-empty);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  transition: 0.5s ease-in;
+}
+
+.num {
+  border: 2px solid var(--line-border-empty);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.6s ease;
+}
+
+.progress-step.current-progress {
+  border-color: var(--line-border-fill);
+}
+
+.num.num-active {
+  border-color: var(--line-border-fill);
+}
+
+.btn-signup {
+  background-color: var(--line-border-fill);
+  color: #fff;
+  border-radius: 6px;
+  border: 0;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0rem;
+  font-size: 1rem;
+}
+.btn-signup:active {
+  transform: scale(0.96);
+}
+
+.btn-signup:focus {
+  outline: 0;
+}
+
+.btn-signup:disabled {
+  display: none;
+}
+
+.first-form {
+  padding: 0.5rem;
+}
+
+ul {
+  list-style: none;
+  padding-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+li {
+  padding: 0.2rem;
+}
+
+.forms > form {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: black;
+}
+
+#errorMsg {
+  margin: 0;
+  color: red;
+  padding: 0rem 3rem;
+  font-style: oblique;
 }
