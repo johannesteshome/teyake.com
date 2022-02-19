@@ -129,7 +129,7 @@ document.getElementById("save-pass").addEventListener("click", () => {
   }
 
   if (newpass.value != comfirmPass.value) {
-    console.log(password.value, comfirmPassword.value);
+    console.log(password.value, comfirmPass.value);
     error.innerText = "Password Does Not Match.";
     return;
   }
