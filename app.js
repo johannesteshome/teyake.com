@@ -47,7 +47,6 @@ let sidebarOpen = false;
 
 const openSidebar = function () {
   sideBar.style.transform = "translateX(0)";
-  // sideBar.style.opacity = "1";
   header.classList.remove("transparent");
   header.style.backgroundColor = "rgba(53, 50, 56,1)";
   document.querySelector("body").classList.add("overflow-hidden");
@@ -56,7 +55,6 @@ const openSidebar = function () {
 };
 const closeSidebar = function () {
   sideBar.style.transform = "translateX(100%)";
-  // sideBar.style.opacity = "0";
   header.style.removeProperty("background-color");
   header.classList.add("transparent");
   document.querySelector("body").classList.remove("overflow-hidden");
