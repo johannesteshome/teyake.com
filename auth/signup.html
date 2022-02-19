@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="signup.css" />
   </head>
   <body>
-    <div class="container text-white">
+    <div class="container">
       <div class="header">
         <div class="header-left">
           <img src="../assets/teyake_white_fill.png" class="logo" />
@@ -52,56 +52,86 @@
       </div>
       <main class="sign-up-page flex items-center justify-center">
         <div class="auth-box flex flex-col items-center justify-center">
-          <form class="text-primary flex flex-col gap-4">
-            <label for="fullname" class="flex gap-4 items-center">
-              Full Name
+          <div class="sign-up-form">
+            <div class="signup-header">
+              <h2>register an account</h2>
+              <div class="progress-container">
+                <div class="progress-step current-progress">
+                  <span class="num num-active">1</span>User
+                </div>
+                <div class="progress-step">
+                  <span class="num">2</span>Details
+                </div>
+              </div>
+            </div>
+
+            <div class="first-form forms">
+              <form action="">
+                <label for="fullname">Name: </label>
+                <input
+                  type="text"
+                  name="fullname"
+                  class="auth-input"
+                  id="fullname-input"
+                  placeholder="Input Full Name"
+                  required
+                />
+
+                <label for="username">Username: </label>
+                <input
+                  type="text"
+                  name="phoneNumber"
+                  class="auth-input"
+                  id="username-input"
+                  placeholder="Input Username"
+                  required
+                />
+
+                <label for="password">Password:</label>
+                <input
+                  type="password"
+                  class="auth-input"
+                  name="pass"
+                  id="password-input"
+                  placeholder="Input Password"
+                />
+
+                <label for="comfirm">Comfirm Password:</label>
+                <input
+                  type="password"
+                  class="auth-input"
+                  name="comfirm"
+                  id="comfirm-password"
+                  placeholder="Comfirm Entered Password"
+                />
+              </form>
+            </div>
+          </div>
+          <div class="second-form forms hidden">
+            <form action="">
+              <label for="phone-input">Phone Number: </label>
               <input
-                type="text"
+                type="tel"
+                name="phoneNumber"
                 class="auth-input"
-                placeholder="Enter your full name"
-                id="fullname-input"
+                id="phone-input"
+                placeholder="Input Phone Number"
+                required
               />
-            </label>
-            <label for="fullname" class="flex gap-4 items-center">
-              Username
-              <input
-                type="text"
-                class="auth-input"
-                placeholder="Enter your full name"
-                id="username-input"
-              />
-            </label>
-            <label for="fullname" class="flex gap-4 items-center">
-              Password
-              <input
-                type="text"
-                class="auth-input"
-                placeholder="Enter your full name"
-                id="password-input"
-              />
-            </label>
-            <label for="email" class="flex gap-4 items-center">
-              Email
+
+              <label for="email-input">Email: </label>
               <input
                 type="email"
+                name="email"
                 class="auth-input"
-                name=""
                 id="email-input"
-                placeholder="Enter your Email"
+                placeholder="Input Email Address"
+                required
               />
-            </label>
-            <label for="phone" class="flex gap-4 items-center">
-              Phone Number
-              <input
-                type="text"
-                class="auth-input"
-                name=""
-                id="phone-input"
-                placeholder="Enter your phone number"
-              />
-            </label>
-            <label for="institution" class="flex gap-4 items-center">
-              Institution
+
+              <label for="institution" class="flex gap-4 items-center">
+                Institution</label
+              >
               <input
                 type="text"
                 class="auth-input"
@@ -109,9 +139,19 @@
                 id="institution-input"
                 placeholder="Enter your institution"
               />
-            </label>
-            <button type="submit" id="signup-btn">Sign Up</button>
-          </form>
+            </form>
+          </div>
+
+          <p id="errorMsg"></p>
+
+          <div>
+            <button class="btn-signup" id="pre-signup" disabled>
+              Previous
+            </button>
+            <button type="submit" class="btn-signup" id="next-signup">
+              Next
+            </button>
+          </div>
         </div>
       </main>
     </div>

@@ -309,7 +309,7 @@ header {
 /* Content Section */
 
 .main-container {
-    background-image: url("../resources/images/about/about_us.jpg");
+    background-image: url("../resources/images/how_it_works/how_bg.jpg");
     background-position: center;
     background-size: cover;
     height: 80vh;
@@ -317,16 +317,35 @@ header {
 
 .about_us_text {
     max-width: 80%;
-    margin: 8rem auto;
+    /* margin: 8rem 8rem;*/
+    margin: 8rem 8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.how-title {
+    margin: 4rem 0rem;
 }
 
 .text-content {
     padding-inline: 4rem;
     min-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .img-content {
     min-width: 50%;
+    min-height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-content>img {
+    height: 360px;
 }
 
 .try-it-btn {
@@ -348,41 +367,6 @@ header {
     background-color: var(--primary-color);
     color: #fff;
     border: 1px solid var(--light-text);
-}
-
-.our_team {
-    margin-bottom: 2rem;
-}
-
-.team-member {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    max-width: 15rem;
-}
-
-.img-team-mb {
-    background: url("../resources/images/about/avatar.png");
-    width: 100%;
-    height: 17rem;
-    background-size: cover;
-    background-position: center;
-}
-
-.card-txt-container {
-    padding-inline: 1rem;
-    padding-bottom: 1.5rem;
-}
-
-.team-member h3 {
-    font-size: 1.2rem;
-}
-
-.team-member p {
-    font-size: 12px;
-}
-
-.team-container {
-    margin-top: 5rem;
-    margin-bottom: 5rem;
 }
 
 h1 {
