@@ -35,6 +35,7 @@ svg {
 }
 #exam-key {
   background-color: rgb(231, 230, 230);
+  color:black;
   width: 90%;
   height: 2.5rem;
   border-radius: 2rem;
@@ -152,12 +153,121 @@ svg {
   z-index: 1000;
 }
 
-.auth-box {
+/* .auth-box {
   width: 500px;
   aspect-ratio: 1;
   background-color: white;
-}
+} */
 
 .hidden {
   display: none;
+}
+
+/* newly added ones are here */
+
+:root{
+  --line-border:#accfbede;
+  --button-color:rgba(91, 208, 101, 0.433);
+  --textfield-color: rgb(112, 121, 64);
+}
+
+
+* {
+ box-sizing: border-box;
+ margin: 0;
+ text-decoration: none;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0%;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:max(18rem, 50%);
+}
+
+.login-container{
+  /* border: .2rem solid var(--line-border); */
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background:rgba(67, 57, 57, 0.891);
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.inputs{
+  flex: 1;
+}
+.text-field{
+  margin-top: 0.5rem;
+}
+
+#login-email #uname{
+  margin-bottom: 0.5rem;
+}
+
+.login-container > a{
+  text-decoration: none;
+ padding:0;
+ margin: 0;
+}
+button:hover{
+  background-color: rgb(19, 70, 53);
+  color:rgb(128, 128, 122);
+}
+button:active{
+  transform: scale(.99);
+}
+
+.text-field{
+  padding: .5rem;
+  border-radius: 1em;
+  margin-bottom: .5rem;
+  width: 100%;
+  border-style: none;
+  color:#fff;
+  background-color: var(--textfield-color);
+}
+
+input:focus{
+  outline: none;
+}
+
+button{
+  border: none;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+  width: 100%;
+  padding: .5rem;
+  background-color: var(--secondary-color);
+}
+
+h1{
+  font-weight: normal;
+  display: flex;
+  justify-content: center;
+}
+
+::placeholder{
+  color:#e0e0e0;
+}
+
+
+#errorMsg{
+  color:red;
+  justify-content: center;
+  display: flex;
 }

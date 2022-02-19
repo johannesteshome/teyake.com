@@ -11,13 +11,18 @@
     <main>
         <div class="login-container">
             <h1>Log In</h1>
-            <form action="">
+            <form class="text-primary flex flex-col">
                 <div class="inputs">
-                    <input type="text" name="email" id="login-email" placeholder="Email" required>
-                    <input type="password" name="password" id="login-password" placeholder="password" required>
+                    <label for="uname">
+                    <input type="text" id="uname" placeholder="Username" />
+                    </label>
+                    <label for="pass">
+                    <input type="password" id="pass" placeholder="Password" />
+                    </label>
                 </div>
-                <a href="#"><button id="submit">Submit</button></a>
-            </form>
+ 
+                <button type="submit" id="signin-btn">Sign In</button>
+              </form>
         </div>
     </main>
 </body>
