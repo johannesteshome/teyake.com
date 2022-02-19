@@ -84,10 +84,10 @@ select {
 
 :root {
   font-family: "Poppins", sans-serif;
-  --primary-color: rgb(21, 34, 53);
-  --light-text: rgb(100, 100, 100);
-  --secondary-color: rgb(248, 152, 49);
-  --sidebar-color: rgba(19, 41, 74, 1);
+  --primary-color: rgb(53, 50, 56);
+  --light-text: #d3dedc;
+  --secondary-color: rgb(221, 110, 66);
+  --sidebar-color: #0d363d;
 }
 .btn {
   border: none;

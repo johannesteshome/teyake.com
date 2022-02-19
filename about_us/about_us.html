@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home | Teyake</title>
+    <title>About Us | Teyake</title>
     <link rel="stylesheet" href="style-reset.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -13,21 +13,50 @@
 <body id="top">
     <!-- Container for the whole document, replacement for the body tag to avoid styling the tag directly -->
     <div class="container text-white">
+        <!-- The sidebar/menu component which is only visible on sreen sizes below 1150px -->
+        <div class="sidebar transition">
+            <form action="#" class="enter-exam-sidebar flex flex-col">
+                <label for="exam-key" class="enter-exam-label font-semibold">Student</label>
+                <div class="enter-exam-input">
+                    <input type="text" name="exam-key" class="exam-key" id="exam-key-sidebar" placeholder="Enter Exam Key" />
+                    <button type="submit" class="btn enter-exam-btn" id="enter-exam-sidebar-btn">
+                Next
+              </button>
+                </div>
+            </form>
+            <div class="sidebar-sign-in flex flex-col w-full">
+                <p>Teacher</p>
+                <div class="flex">
+                    <a href="auth/signin.html"><button type="button">Sign In</button></a>
+                    <a href="auth/signup.html"><button type="button">Sign Up</button></a>
+                </div>
+            </div>
+            <div class="sidebar-links">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../support/support.html">How It Works</a></li>
+                    <li><a href="./about_us.html">About</a></li>
+
+                    <li><a href="../index.html#testimonals">Testimonials</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- End of Sidebar Component -->
         <!-- Header for mobile view -->
         <header class="">
             <img src="./assets/teyake_white_fill.png" class="logo" />
             <span class="menu-btn"><svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-            clip-rule="evenodd"
-          /></svg
-        >
-        </span>
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            /></svg
+          >
+          </span>
         </header>
         <!-- End of Mobile View Header -->
         <!-- Header for Desktop view only above 1150px -->
@@ -36,18 +65,18 @@
                 <img src="../assets/teyake_white_fill.png" class="logo" />
                 <nav>
                     <ul class="primary-nav flex">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">How it Works</a></li>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../support/support.html">How it Works</a></li>
                         <li class="nav-active"><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
+
                     </ul>
                 </nav>
             </div>
             <div class="header-right flex items-center justify-between">
                 <div class="sign-in flex flex-col items-center justify-center gap-1">
                     <div class="flex gap-4">
-                        <button type="button">Sign In</button>
-                        <button type="button">Sign Up</button>
+                        <a href="auth/signin.html"><button type="button">Sign In</button></a>
+                        <a href="auth/signup.html"><button type="button">Sign Up</button></a>
                     </div>
                     <p class="text-center">Teachers</p>
                 </div>
@@ -96,12 +125,11 @@
             </div>
             <div class="sidebar-links">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">How It Works</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Support</a></li>
-                    <li><a href="#">Tools</a></li>
-                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../support/support.html">How It Works</a></li>
+                    <li><a href="../about_us/about_us.html">About</a></li>
+
+                    <li><a href="../index.html#testimonals">Testimonials</a></li>
                 </ul>
             </div>
         </div>
@@ -117,11 +145,9 @@
                 <div class="text-content">
                     <p class="text-primary">
 
-                        It all started in 2016 when Erik Corell, a Swedish math teacher, found himself frustrated with the old-school way of giving exams. Digital exams offered advantages such as auto-marking and integrated tools and could eliminate problems like illegible handwriting
-                        and excessive paper waste. At the time, few digital exam platforms existed, and the ones that did felt over-complicated and out of touch with a teacher’s real needs in the classroom. Determined to find a solution that worked in
-                        the real world for teachers, Erik teamed up with his friend Anders Torkelsson, an entrepreneur with a background in business and product development, and Martin Krisell, a math teacher and computer programmer, to develop Exam.net.
-                        What started with three friends has now grown into a company of over 30 experts, most of whom also have professional backgrounds in teaching. Teachers are at the center of everything we do because our software is for teachers by
-                        teachers.
+                        Teyake.com was built by visionary team who wanted to change the problems that arise around exam giving techniques. As we know, the current education system is challenged with several issues like inadequate platforms that fulfills the needs of teachers
+                        and students. The team behind Teyake.com seek to solve this problem by providing a secure and trusted platform for teachers that allows them to create exams which they can easily manage easily and track records and scores of their
+                        students without further ado.
                     </p>
                 </div>
 
@@ -139,17 +165,15 @@
                 <div class="text-content">
                     <p class="text-primary">
 
-                        It all started in 2016 when Erik Corell, a Swedish math teacher, found himself frustrated with the old-school way of giving exams. Digital exams offered advantages such as auto-marking and integrated tools and could eliminate problems like illegible handwriting
-                        and excessive paper waste. At the time, few digital exam platforms existed, and the ones that did felt over-complicated and out of touch with a teacher’s real needs in the classroom. Determined to find a solution that worked in
-                        the real world for teachers, Erik teamed up with his friend Anders Torkelsson, an entrepreneur with a background in business and product development, and Martin Krisell, a math teacher and computer programmer, to develop Exam.net.
-                        What started with three friends has now grown into a company of over 30 experts, most of whom also have professional backgrounds in teaching. Teachers are at the center of everything we do because our software is for teachers by
-                        teachers.
+                        The team consists of six members from Addis Ababa Science and Technology University. The team believed that digital exams offered advantages such as auto-marking and integrated tools and could eliminate problems like illegible handwriting and excessive
+                        paper waste. At the time, few digital exam platforms existed, and the ones that did felt over-complicated and out of touch with a teacher’s real needs in the classroom. Determined to find a solution that worked in the real world
+                        for teachers
                     </p>
                 </div>
             </div>
             <div class="btn-container flex justify-center gap-4">
-                <button class="btn try-it-btn pointer transition">Try It Now</button>
-                <button class="btn-light how-btn pointer transition">How It Works</button>
+                <a href="../auth/signin.html"> <button class="btn try-it-btn pointer transition">Try It Now</button></a>
+                <a href="../support/support.html"><button class="btn-light how-btn pointer transition">How It Works</button></a>
             </div>
             <div class="team-container flex flex-col gap-4">
                 <h2 class="text-center text-primary ">Our Team</h2>
@@ -157,36 +181,36 @@
                     <div class="team-member flex flex-col">
                         <div class="img-team-mb"></div>
                         <div class="card-txt-container">
-                            <h3 class="text-secondary">Team Member Name</h3>
-                            <p class="text-primary">Short Description</p>
+                            <h3 class="text-secondary">Yohannes Teshome</h3>
+                            <p class="text-primary">Graphics Designer</p>
                         </div>
                     </div>
                     <div class="team-member flex flex-col">
                         <div class="img-team-mb"></div>
                         <div class="card-txt-container">
-                            <h3 class="text-secondary">Team Member Name</h3>
-                            <p class="text-primary">Short Description</p>
+                            <h3 class="text-secondary">Yohannes Assefa</h3>
+                            <p class="text-primary">Front-end Developer</p>
                         </div>
                     </div>
                     <div class="team-member flex flex-col">
                         <div class="img-team-mb"></div>
                         <div class="card-txt-container">
-                            <h3 class="text-secondary">Team Member Name</h3>
-                            <p class="text-primary">Short Description</p>
+                            <h3 class="text-secondary">Yohannes Mesganaw</h3>
+                            <p class="text-primary">Front-end Developer</p>
                         </div>
                     </div>
                     <div class="team-member flex flex-col">
                         <div class="img-team-mb"></div>
                         <div class="card-txt-container">
-                            <h3 class="text-secondary">Team Member Name</h3>
-                            <p class="text-primary">Short Description</p>
+                            <h3 class="text-secondary">Yohannes Fantahun</h3>
+                            <p class="text-primary">Front-end Developer</p>
                         </div>
                     </div>
                     <div class="team-member flex flex-col">
                         <div class="img-team-mb"></div>
                         <div class="card-txt-container">
-                            <h3 class="text-secondary">Team Member Name</h3>
-                            <p class="text-primary">Short Description</p>
+                            <h3 class="text-secondary">Tsion Moges</h3>
+                            <p class="text-primary">Front-end Developer</p>
                         </div>
                     </div>
 
@@ -202,7 +226,7 @@
                 <div>
                     <a href="teyake.com" class="footer-logo"><img src="../assets/teyake_white_fill.png" class="logo" /></a>
                     <ul class="p-0">
-                        <li><a href="#">Teacher Sign In</a></li>
+                        <li><a href="../auth/signin.html">Teacher Sign In</a></li>
                         <li><a href="#exam-key">Student Exam Key</a></li>
                     </ul>
                 </div>
@@ -210,15 +234,12 @@
                 <div class="footer-menu">
                     <h3>Menu</h3>
                     <ul class="p-0">
-                        <li><a href="">Home</a></li>
-                        <li><a href="">How it works</a></li>
-                        <li><a href="">Free Trial</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Support</a></li>
-                        <li><a href="">Testimonials</a></li>
-                        <li><a href="">Privacy Center</a></li>
-                        <li><a href="">Video Training</a></li>
-                        <li><a href="">Cheating</a></li>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./support/support.html">How it works</a></li>
+                        <li><a href="auth/signup.html">Free Trial</a></li>
+                        <li><a href="./about_us/about_us.html">About</a></li>
+
+                        <li><a href="../index.html#testimonals">Testimonials</a></li>
                     </ul>
                 </div>
             </nav>

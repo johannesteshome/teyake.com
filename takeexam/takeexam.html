@@ -38,19 +38,26 @@
         <button id="submit-exam" class="hidden">Submit</button>
       </main>
     </div>
-    <!-- <div class="alert">
-      <div class="alert-box flex flex-col items-center justify-center">
-        <h2 class="text-center">Student Name</h2>
-        <h3 class="text-center">Exam name</h3>
-        <p>You scored <span>6</span>/ <span>10</span> </p>
-        <a href="../index.html"><button>Done</button></a>
+
+    <div class="result hidden">
+      <div class="result-box flex flex-col items-center justify-center">
+        <h2 class="text-center" id="result-student-name">Student Name</h2>
+        <h3 class="text-center" id="result-exam-name">Exam name</h3>
+        <p>You scored <span id="score">6</span>/<span id="result-max">10</span> </p>
+        <a href="../index.html" id="finish-exam"><button>Done</button></a>
       </div>
-    </div> -->
-    <div class="alert hidden" id="warning">
-      <div class="alert-box flex flex-col items-center justify-center">
-        <strong> Warning! </strong>
-        <p>Return to Fullscreen</p>
-        <p>Disqualification in 5 Seconds</p>
+    </div>
+    
+    <div class="warning-modal hidden" id="warning-modal">
+      <div class="warning-modal-content">
+          <h2>You're not allowed to leave fullscreen mode!</h2>
+
+          <p>Go back to fullscreen mode in <span id="remainingSeconds">0</span> or your test will be disqualified.</p>
+
+          <p class="warning-btns">
+              <button type="button" id="back-to-exam">Back to Exam</button>
+              <button type="button" id="exit-exam"">Exit Anyways</button>
+          </p>
       </div>
     </div>
   </body>

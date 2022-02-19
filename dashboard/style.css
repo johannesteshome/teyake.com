@@ -266,6 +266,26 @@ main {
   transition: 150ms ease-in-out;
   margin-left: 0.5rem;
 }
+.toggle-exam:hover,
+.remove-exam:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+.remove-exam {
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid black;
+  font-size: 12px;
+  padding: 0.25rem;
+  margin-left: 0.5rem;
+  transition: 150ms ease-in-out;
+}
+.remove-exam > svg {
+  width: 10px;
+}
 #status {
   display: flex;
   align-items: center;
@@ -273,10 +293,7 @@ main {
 .active-notif {
   margin-top: 1rem;
 }
-.toggle-exam:hover {
-  background-color: var(--primary-color);
-  color: white;
-}
+
 .exam-list-head {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -599,11 +616,33 @@ main {
   transition: 150ms ease-in-out;
 }
 
-.preview-btns button:hover {
+.preview-btns button:hover,
+.edit-question:hover {
   background-color: var(--primary-color);
   color: white;
 }
-
+.q-container {
+  display: flex;
+  flex-direction: column;
+}
+.edit-question {
+  align-self: flex-end;
+  background-color: white;
+  border: 1px solid var(--primary-color);
+  transition: 150ms ease-in-out;
+  padding: 0.25rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+}
+.edit-modal {
+  max-width: 720px;
+  background-color: white;
+}
+.edit-choice-list {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
 /* Results Page */
 .results-page {
   width: 85vw;
@@ -632,6 +671,7 @@ main {
   padding: 1rem;
   overflow-x: scroll;
   border-bottom: 1px solid black;
+  /* display: none; */
 }
 .result-description p {
   width: 160px;

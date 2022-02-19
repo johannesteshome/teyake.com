@@ -9,9 +9,13 @@ const writeExamPage = document.querySelector(".write-exam");
 const resultPage = document.querySelector(".results-page");
 const examNameInput = document.querySelector("#add-exam-name");
 const questionPrompt = document.querySelector("#question-prompt");
+const editQuestionPrompt = document.querySelector("#edit-question-prompt");
 const links = document.querySelectorAll(".list-item");
 const choiceList = document.querySelector(".choice-container");
+const editChoiceList = document.querySelector(".edit-choice-container");
+const previewQuestionList = document.querySelector(".preview-question-list");
 const previewContainer = document.querySelector(".preview-content");
+const editModal = document.querySelector(".edit-modal");
 const logoutBtn = document.querySelector("#logout");
 let pages = [dashboardHome, examListPage, addExamContainer, resultPage];
 
@@ -71,6 +75,17 @@ logoutBtn.addEventListener("click", function () {
   localStorage.setItem("current", 0);
 });
 
+document.querySelector("#studCount").textContent = currentTeacherStudents.length
+document.querySelector("#examCount").textContent = allExams.filter((test) => {
+  return test.teacherID == Number(currentSignin);
+}).length
+let avg = [];
+currentTeacherStudents.forEach(student => {
+  avg.push(student.marked.reduce((prev, next)=>prev+next))
+})
+document.querySelector("#avgScore").textContent = avg.reduce((prev, next) => prev+next)/avg.length
+
+
 function showActive() {
   document.querySelector(".exam-tile-container").innerHTML = "";
   allExams = JSON.parse(localStorage.getItem("exams"));
@@ -126,7 +141,9 @@ function showAllExams() {
       let removeBtn = document.createElement("button");
       removeBtn.type = "button";
       removeBtn.className = "remove-exam";
-      removeBtn.innerHTML = `x`;
+      removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </svg>`;
       cont.lastChild.appendChild(removeBtn);
       btn.addEventListener("click", () => {
         let removeKey =
@@ -148,12 +165,21 @@ function showAllExams() {
       removeBtn.addEventListener("click", () => {
         let removeKey =
           btn.parentElement.parentElement.childNodes[2].textContent;
-        allExams = allExams.filter((exam) => exam.key != removeKey);
-        localStorage.setItem("exams", JSON.stringify(allExams));
-        showAllExams();
-        showActive();
+        if (confirm("Are you sure you want to remove this exam?\nChanges cannot be undone!") == true) {
+          allExams = allExams.filter(exam => exam.key != removeKey);
+          localStorage.setItem("exams", JSON.stringify(allExams));
+          showActive();
+          showAllExams();
+        } else {
+          console.log("You canceled!");
+        }
       });
-
+      // let removeKey =
+      //     btn.parentElement.parentElement.childNodes[2].textContent;
+      //   allExams = allExams.filter((exam) => exam.key != removeKey);
+      //   localStorage.setItem("exams", JSON.stringify(allExams));
+      //   showAllExams();
+      //   showActive();
       document.querySelector(".all-exam-container").appendChild(cont);
     });
   localStorage.setItem("exams", JSON.stringify(allExams));
@@ -176,6 +202,8 @@ document.querySelector("#add-btn").addEventListener("click", function () {
 
 //INITIALIZING THE EXAM
 let test = new Exam("");
+// var test = allExams[0];
+// console.log(test);
 document
   .querySelector("#proceed-to-write")
   .addEventListener("click", function (evt) {
@@ -298,20 +326,32 @@ document
   });
 
 const previewExam = function () {
+  console.log(test);
   document.querySelector(".preview-exam").classList.remove("hidden");
+  previewContainer.classList.toggle("hidden");
+  editModal.classList.toggle("hidden");
+  previewQuestionList.innerHTML = "";
+  if(!!document.querySelector(".exam-title")){
+  document.querySelector(".exam-title").remove();
+  }
   let examTitle = document.createElement("h1");
   examTitle.textContent = test.name;
   examTitle.className = "exam-title";
-  previewContainer.appendChild(examTitle);
+  previewQuestionList.parentElement.insertBefore(examTitle, previewQuestionList);
 
   test.questions.forEach((question, i) => {
     var qcontainer = document.createElement("div");
     qcontainer.className = "q-container";
+    qcontainer.id = `${i}`
     let prompt = document.createElement("h2");
     prompt.id = "question-prompt";
+    console.log(question[0]);
     prompt.textContent = `${i + 1}.${question[0]}`;
     qcontainer.appendChild(prompt);
-
+    let edit = document.createElement("button");
+    edit.className = "edit-question";
+    edit.textContent = "Edit Question";
+    qcontainer.appendChild(edit);
     for (let j = 1; j < question.length - 1 && question[j] != null; j++) {
       var choiceContainer = document.createElement("div");
       choiceContainer.className = "choice-container";
@@ -320,18 +360,77 @@ const previewExam = function () {
       choiceText.textContent = `${String.fromCharCode(char + j)}. ${
         question[j]
       }`;
-
       // choiceContainer.appendChild(choice);
       choiceContainer.appendChild(choiceText);
-      // console.log(choiceContainer);
       qcontainer.appendChild(choiceContainer);
     }
+    edit.addEventListener("click", function(){
+      let toBeEdited = Number(edit.parentElement.id);
+      console.log(toBeEdited);
+      previewContainer.classList.add("hidden");
+      editModal.classList.remove("hidden");
+      document.querySelector(".edit-choice-list").innerHTML = "";
+      editQuestionPrompt.value = test.questions[toBeEdited][0];
+      for(let j=1;j<test.questions[toBeEdited].length && test.questions[toBeEdited][j] !== null ;j++){
+        let cont = document.createElement("div");
+        cont.id = "edit-choice-item";
+        cont.classList.add("choice-item", "flex", "items-center");
 
+        let btn = document.createElement("input");
+        btn.type = "radio";
+        btn.className = "select-choice";
+        btn.name = "choice";
+
+        let inp = document.createElement("input");
+        inp.type = "text";
+        inp.placeholder = "Enter Choice";
+        inp.className = "choice-input";
+        inp.id = "edit-choice-input"
+        inp.value = test.questions[toBeEdited][j];
+
+        let del = document.createElement("button");
+        del.id = "remove-choice";
+        del.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"
+        />
+      </svg>`;
+
+        document.querySelectorAll("#remove-choice").forEach((btn) => {
+          btn.addEventListener("click", function (evt) {
+            evt.preventDefault();
+            console.log("deleting");
+            totalChoice--;
+            btn.parentElement.remove();
+          });
+        });
+        cont.appendChild(btn);
+        cont.appendChild(inp);
+        cont.appendChild(del);
+        document.querySelector(".edit-choice-list").appendChild(cont);
+      }
+    })
     qcontainer.appendChild(choiceContainer);
-    previewContainer.appendChild(qcontainer);
+    previewQuestionList.appendChild(qcontainer);
   });
-};
+}
+// previewExam();
 
+document.querySelector("#done-edit").addEventListener("click", function(){
+  let editing = Number(editQuestionPrompt.parentElement.id);
+  console.log("clicked");
+  test.questions[editing][0] = editQuestionPrompt.value;
+  for(let k=1;k<document.querySelectorAll("#edit-choice-input").length;k++){
+    test.questions[editing][k] = document.querySelectorAll("#edit-choice-input")[k-1].value;
+    // console.log(document.querySelectorAll("#edit-choice-input")[k-1].value);
+  }
+  document.querySelectorAll("#edit-choice-item").forEach((answer, i) => {
+    if (answer.childNodes[0].checked) {
+      test.question[editing][6] = i + 1;
+    }
+  })
+  console.log(test);
+  previewExam();
+})
 document.getElementById("finalize-btn").addEventListener("click", previewExam);
 document.querySelector("#done-preview").addEventListener("click", function () {
   allExams.push(test);

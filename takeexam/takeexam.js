@@ -7,6 +7,17 @@ const studName = document.querySelector("#student-name");
 const studEmail = document.querySelector("#student-email");
 const studID = document.querySelector("#student-id");
 const modal = document.querySelector(".modal");
+const resultStudName = document.querySelector("#result-student-name")
+const resultExamName = document.querySelector("#result-exam-name")
+const score = document.querySelector("#score")
+const resultMax = document.querySelector("#result-max")
+const finishExam = document.querySelector("#finish-exam")
+const warningModal = document.querySelector('#warning-modal')
+const remainingSeconds = document.querySelector('#remainingSeconds')
+
+let leaveExamWarningTimeout = null
+let warningTimerInterval = null
+let warningSeconds = 11
 
 let studKey = "-1";
 if (!!localStorage.getItem("studKey")) {
@@ -74,29 +85,59 @@ enterBtn.addEventListener("click", function (evt) {
     student.marked = new Array(currentExam.questions.length).fill(0);
     showExam();
     document.documentElement.requestFullscreen();
-    document.addEventListener("fullscreenchange", onFullScreenChange);
-    document.addEventListener("webkitfullscreenchange", onFullScreenChange);
-    document.addEventListener("mozfullscreenchange", onFullScreenChange);
   }
 });
 
-const onFullScreenChange = function () {
-  var fullscreenElement =
-    document.fullscreenElement ||
-    document.mozFullScreenElement ||
-    document.webkitFullscreenElement;
+document.querySelector("#back-to-exam").addEventListener("click", function () {
+  document.documentElement.requestFullscreen();
+}) 
 
-  let i = 0;
-  alert("here");
-  if (!fullscreenElement) {
-    console.log("not");
-    alert("Warning: Return to fullscreen");
-  } else {
-    alert("in");
+document.querySelector("#exit-exam").addEventListener("click", exitExam);
+
+function exitExam() {
+  hideModal()
+  console.log("exitting Exam");
+  document.querySelector("#submit-exam").click();
+  clearTimers()
+}
+
+function hideModal() {
+  warningModal.classList.add('hidden')
+}
+
+function showModal() {
+  warningModal.classList.remove('hidden')
+}
+
+function clearTimers() {
+  if (leaveExamWarningTimeout) {
+      clearTimeout(leaveExamWarningTimeout)
   }
-};
+  if (warningTimerInterval) {
+      clearInterval(warningTimerInterval)
+  }
+}
 
-const showExam = function () {
+function showExam() {
+  document.addEventListener('fullscreenchange', event => {
+    if (document.fullscreenElement) {
+        clearTimers()
+        warningSeconds = 11
+        hideModal()
+    } else {
+        console.log('not full screen')
+        remainingSeconds.textContent = 10
+        showModal()
+        leaveExamWarningTimeout = setTimeout(() => {
+            exitExam()
+        }, warningSeconds * 1000)
+        warningTimerInterval = setInterval(() => {
+            warningSeconds--
+            remainingSeconds.textContent = warningSeconds
+        }, 1000)
+    }
+})
+
   let examTitle = document.createElement("h1");
   examTitle.textContent = currentExam.name;
   examTitle.className = "exam-title";
@@ -144,9 +185,6 @@ document.querySelector("#submit-exam").addEventListener("click", function () {
       }
     });
   });
-
-  // console.log(student.answers);
-
   console.log(student.answers);
   let checking = [];
   currentExam.questions.forEach((question) => {
@@ -160,8 +198,15 @@ document.querySelector("#submit-exam").addEventListener("click", function () {
   console.log(student.marked);
   console.log(student.marked.reduce((prev, next) => prev + next));
   allStudents.push(student);
-  // console.log(allStudents);
-  student = null;
+  showResult();
   localStorage.setItem("students", JSON.stringify(allStudents));
-  // window.open("takeexam.html" ,"_parent");
+  // student = null;
 });
+function showResult(){
+  document.querySelector(".result").classList.remove("hidden")
+  resultStudName.textContent = student.name;
+  resultExamName.textContent = currentExam.name;
+  resultMax.textContent = student.marked.length;
+  score.textContent = student.marked.reduce((prev, next)=>prev+next);
+
+}
