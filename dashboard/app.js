@@ -75,16 +75,18 @@ logoutBtn.addEventListener("click", function () {
   localStorage.setItem("current", 0);
 });
 
-document.querySelector("#studCount").textContent = currentTeacherStudents.length
+document.querySelector("#studCount").textContent =
+  currentTeacherStudents.length;
 document.querySelector("#examCount").textContent = allExams.filter((test) => {
   return test.teacherID == Number(currentSignin);
-}).length
+}).length;
 let avg = [];
-currentTeacherStudents.forEach(student => {
-  avg.push(student.marked.reduce((prev, next)=>prev+next))
-})
-document.querySelector("#avgScore").textContent = avg.reduce((prev, next) => prev+next)/avg.length
-
+currentTeacherStudents.forEach((student) => {
+  avg.push(student.marked.reduce((prev, next) => prev + next));
+});
+if (avg.length != 0)
+  document.querySelector("#avgScore").textContent =
+    avg.reduce((prev, next) => prev + next) / avg.length;
 
 function showActive() {
   document.querySelector(".exam-tile-container").innerHTML = "";
@@ -165,8 +167,12 @@ function showAllExams() {
       removeBtn.addEventListener("click", () => {
         let removeKey =
           btn.parentElement.parentElement.childNodes[2].textContent;
-        if (confirm("Are you sure you want to remove this exam?\nChanges cannot be undone!") == true) {
-          allExams = allExams.filter(exam => exam.key != removeKey);
+        if (
+          confirm(
+            "Are you sure you want to remove this exam?\nChanges cannot be undone!"
+          ) == true
+        ) {
+          allExams = allExams.filter((exam) => exam.key != removeKey);
           localStorage.setItem("exams", JSON.stringify(allExams));
           showActive();
           showAllExams();
@@ -331,18 +337,21 @@ const previewExam = function () {
   previewContainer.classList.toggle("hidden");
   editModal.classList.toggle("hidden");
   previewQuestionList.innerHTML = "";
-  if(!!document.querySelector(".exam-title")){
-  document.querySelector(".exam-title").remove();
+  if (!!document.querySelector(".exam-title")) {
+    document.querySelector(".exam-title").remove();
   }
   let examTitle = document.createElement("h1");
   examTitle.textContent = test.name;
   examTitle.className = "exam-title";
-  previewQuestionList.parentElement.insertBefore(examTitle, previewQuestionList);
+  previewQuestionList.parentElement.insertBefore(
+    examTitle,
+    previewQuestionList
+  );
 
   test.questions.forEach((question, i) => {
     var qcontainer = document.createElement("div");
     qcontainer.className = "q-container";
-    qcontainer.id = `${i}`
+    qcontainer.id = `${i}`;
     let prompt = document.createElement("h2");
     prompt.id = "question-prompt";
     console.log(question[0]);
@@ -364,14 +373,19 @@ const previewExam = function () {
       choiceContainer.appendChild(choiceText);
       qcontainer.appendChild(choiceContainer);
     }
-    edit.addEventListener("click", function(){
+    edit.addEventListener("click", function () {
       let toBeEdited = Number(edit.parentElement.id);
       console.log(toBeEdited);
       previewContainer.classList.add("hidden");
       editModal.classList.remove("hidden");
       document.querySelector(".edit-choice-list").innerHTML = "";
       editQuestionPrompt.value = test.questions[toBeEdited][0];
-      for(let j=1;j<test.questions[toBeEdited].length && test.questions[toBeEdited][j] !== null ;j++){
+      for (
+        let j = 1;
+        j < test.questions[toBeEdited].length &&
+        test.questions[toBeEdited][j] !== null;
+        j++
+      ) {
         let cont = document.createElement("div");
         cont.id = "edit-choice-item";
         cont.classList.add("choice-item", "flex", "items-center");
@@ -385,7 +399,7 @@ const previewExam = function () {
         inp.type = "text";
         inp.placeholder = "Enter Choice";
         inp.className = "choice-input";
-        inp.id = "edit-choice-input"
+        inp.id = "edit-choice-input";
         inp.value = test.questions[toBeEdited][j];
 
         let del = document.createElement("button");
@@ -408,29 +422,34 @@ const previewExam = function () {
         cont.appendChild(del);
         document.querySelector(".edit-choice-list").appendChild(cont);
       }
-    })
+    });
     qcontainer.appendChild(choiceContainer);
     previewQuestionList.appendChild(qcontainer);
   });
-}
+};
 // previewExam();
 
-document.querySelector("#done-edit").addEventListener("click", function(){
+document.querySelector("#done-edit").addEventListener("click", function () {
   let editing = Number(editQuestionPrompt.parentElement.id);
   console.log("clicked");
   test.questions[editing][0] = editQuestionPrompt.value;
-  for(let k=1;k<document.querySelectorAll("#edit-choice-input").length;k++){
-    test.questions[editing][k] = document.querySelectorAll("#edit-choice-input")[k-1].value;
+  for (
+    let k = 1;
+    k < document.querySelectorAll("#edit-choice-input").length;
+    k++
+  ) {
+    test.questions[editing][k] =
+      document.querySelectorAll("#edit-choice-input")[k - 1].value;
     // console.log(document.querySelectorAll("#edit-choice-input")[k-1].value);
   }
   document.querySelectorAll("#edit-choice-item").forEach((answer, i) => {
     if (answer.childNodes[0].checked) {
       test.question[editing][6] = i + 1;
     }
-  })
+  });
   console.log(test);
   previewExam();
-})
+});
 document.getElementById("finalize-btn").addEventListener("click", previewExam);
 document.querySelector("#done-preview").addEventListener("click", function () {
   allExams.push(test);
