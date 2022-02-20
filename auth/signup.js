@@ -32,40 +32,48 @@ next.addEventListener("click", () => {
 
     if (!namePattern.test(fullName.value)) {
       erorrLabel.innerText = "Invalid Name";
+      fullName.focus();
       return;
     }
 
     if (usernamePattern.test(username.value)) {
       erorrLabel.innerText = "Invalid Username spaces are not allowed.";
+      username.focus();
       return;
     } else if (username.value.length < 6) {
       erorrLabel.innerText =
         "Invalid Username minimum of 6 characters required for valid username.";
+      username.focus();
       return;
     } else if (username.value.length > 25) {
       erorrLabel.innerText =
         "Invalid Username maximum of 25 characters required for a valid username.";
+      username.focus();
       return;
     }
     if (usernameTaken(username.value)) {
       erorrLabel.innerText =
         "username is Already taken Please choose another one.";
+      username.focus();
       return;
     }
 
     if (password.value.length < 6) {
       erorrLabel.innerText =
         "Invalid password minimum of 6 characters required for valid password.";
+      password.focus();
       return;
     } else if (password.value.length > 25) {
       erorrLabel.innerText =
         "Invalid password maximum of 25 characters required for a valid username.";
+      password.focus();
       return;
     }
 
     if (password.value != comfirmPassword.value) {
       console.log(password.value, comfirmPassword.value);
       erorrLabel.innerText = "Password Does Not Match.";
+      password.focus();
       return;
     }
 
@@ -105,11 +113,13 @@ next.addEventListener("click", () => {
 
     if (!phonePattern.test(phoneNo.value)) {
       erorrLabel.innerText = "Invalid phone Number.";
+      phoneNo.focus();
       return;
     }
 
     if (!emailPattern.test(email.value)) {
       erorrLabel.innerText = "Invalid Email Address.";
+      email.focus();
       return;
     }
 

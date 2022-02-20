@@ -38,11 +38,41 @@ save.addEventListener("click", () => {
 
   if (!phonePattern.test(phoneNo.value)) {
     erorrLabel.innerText = "Invalid phone Number.";
+    phoneNo.focus();
     return;
   }
 
   if (!emailPattern.test(email.value)) {
     erorrLabel.innerText = "Invalid Email Address.";
+    email.focus();
+    return;
+  }
+
+  if (!namePattern.test(fullName.value)) {
+    erorrLabel.innerText = "Invalid Name";
+    fullName.focus();
+    return;
+  }
+  if (usernameTaken(username.value)) {
+    erorrLabel.innerText =
+      "username is Already taken Please choose another one.";
+    username.autofocus();
+    return;
+  }
+
+  if (usernamePattern.test(username.value)) {
+    erorrLabel.innerText = "Invalid Username spaces are not allowed.";
+    username.autofocus();
+    return;
+  } else if (username.value.length < 6) {
+    erorrLabel.innerText =
+      "Invalid Username minimum of 6 characters required for valid username.";
+    username.autofocus();
+    return;
+  } else if (username.value.length > 25) {
+    erorrLabel.innerText =
+      "Invalid Username maximum of 25 characters required for a valid username.";
+    username.autofocus();
     return;
   }
 
@@ -54,29 +84,6 @@ save.addEventListener("click", () => {
     username.value === ""
   ) {
     erorrLabel.innerText = "please Fill in All the Fields";
-    return;
-  }
-
-  if (!namePattern.test(fullName.value)) {
-    erorrLabel.innerText = "Invalid Name";
-    return;
-  }
-  if (usernameTaken(username.value)) {
-    erorrLabel.innerText =
-      "username is Already taken Please choose another one.";
-    return;
-  }
-
-  if (usernamePattern.test(username.value)) {
-    erorrLabel.innerText = "Invalid Username spaces are not allowed.";
-    return;
-  } else if (username.value.length < 6) {
-    erorrLabel.innerText =
-      "Invalid Username minimum of 6 characters required for valid username.";
-    return;
-  } else if (username.value.length > 25) {
-    erorrLabel.innerText =
-      "Invalid Username maximum of 25 characters required for a valid username.";
     return;
   }
 
