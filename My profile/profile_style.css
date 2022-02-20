@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-:root {
-  font-family: "Poppins", sans-serif;
-  --primary-color: rgb(53, 50, 56);
-  --light-text: #d3dedc;
-  --secondary-color: rgb(221, 110, 66);
-  --sidebar-color: #0d363d;
-}
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -19,6 +13,8 @@
 }
 .paded {
   padding: 0 60px;
+  display: flex;
+  flex-direction: column;
 }
 
 #head {
@@ -29,12 +25,25 @@
 }
 
 .btn {
-  padding: 3px 25px;
+  color: black;
+  font-weight: normal;
+  font-size: small;
+  padding: 1px 25px;
   border-radius: 15px;
   margin-top: 5px;
   border: 1px solid black;
   background-color: white;
+  outline: none;
 }
+
+.btn:hover {
+  border: solid 1px var(--secondary-color);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
 .text {
   border-radius: 5px;
   padding: 5px;
@@ -45,4 +54,38 @@
 #select {
   padding: 3px 15px;
   border-radius: 5px;
+}
+
+.password-container {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.password-container input {
+  max-width: 15rem;
+}
+
+#institution {
+  margin-bottom: 1rem;
+}
+
+#save-edit-btn {
+  align-self: center;
+}
+
+.password-changer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-top: 1rem;
+  gap: 0.5rem;
+  max-width: 30rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.password-changer p {
+  color: red;
 }

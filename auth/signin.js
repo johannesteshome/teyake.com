@@ -17,7 +17,7 @@ signinBtn.addEventListener("click", function (evt) {
   evt.preventDefault();
 
   if (username.value === "" || password.value === "") {
-    alert("empty fields");
+    document.getElementById("errorMsg").innerText = "Field Empty";
     return;
   }
 
