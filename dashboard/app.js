@@ -75,16 +75,17 @@ logoutBtn.addEventListener("click", function () {
   localStorage.setItem("current", 0);
 });
 
-document.querySelector("#studCount").textContent = currentTeacherStudents.length
+document.querySelector("#studCount").textContent =
+  currentTeacherStudents.length;
 document.querySelector("#examCount").textContent = allExams.filter((test) => {
   return test.teacherID == Number(currentSignin);
-}).length
+}).length;
 let avg = [];
-currentTeacherStudents.forEach(student => {
-  avg.push(student.marked.reduce((prev, next)=>prev+next))
-})
-document.querySelector("#avgScore").textContent = avg.reduce((prev, next) => prev+next)/avg.length
-
+currentTeacherStudents.forEach((student) => {
+  avg.push(student.marked.reduce((prev, next) => prev + next));
+});
+document.querySelector("#avgScore").textContent =
+  avg.reduce((prev, next) => prev + next) / avg.length;
 
 function showActive() {
   document.querySelector(".exam-tile-container").innerHTML = "";
@@ -153,20 +154,16 @@ function showAllExams() {
         localStorage.setItem("exams", JSON.stringify(allExams));
         showAllExams();
         showActive();
-        // let warning = document.createElement("div");
-        // let text = document.createElement("p");
-        // text.textContent = "Are you sure?";
-        // text.className = "text-center";
-        // let okBtn = document.createElement("button");
-        // okBtn.textContent = "Yes";
-        // warning.appendChild(text);
-        // warning.appendChild(okBtn);
       });
       removeBtn.addEventListener("click", () => {
         let removeKey =
           btn.parentElement.parentElement.childNodes[2].textContent;
-        if (confirm("Are you sure you want to remove this exam?\nChanges cannot be undone!") == true) {
-          allExams = allExams.filter(exam => exam.key != removeKey);
+        if (
+          confirm(
+            "Are you sure you want to remove this exam?\nChanges cannot be undone!"
+          ) == true
+        ) {
+          allExams = allExams.filter((exam) => exam.key != removeKey);
           localStorage.setItem("exams", JSON.stringify(allExams));
           showActive();
           showAllExams();
@@ -174,12 +171,6 @@ function showAllExams() {
           console.log("You canceled!");
         }
       });
-      // let removeKey =
-      //     btn.parentElement.parentElement.childNodes[2].textContent;
-      //   allExams = allExams.filter((exam) => exam.key != removeKey);
-      //   localStorage.setItem("exams", JSON.stringify(allExams));
-      //   showAllExams();
-      //   showActive();
       document.querySelector(".all-exam-container").appendChild(cont);
     });
   localStorage.setItem("exams", JSON.stringify(allExams));
@@ -331,18 +322,21 @@ const previewExam = function () {
   previewContainer.classList.toggle("hidden");
   editModal.classList.toggle("hidden");
   previewQuestionList.innerHTML = "";
-  if(!!document.querySelector(".exam-title")){
-  document.querySelector(".exam-title").remove();
+  if (!!document.querySelector(".exam-title")) {
+    document.querySelector(".exam-title").remove();
   }
   let examTitle = document.createElement("h1");
   examTitle.textContent = test.name;
   examTitle.className = "exam-title";
-  previewQuestionList.parentElement.insertBefore(examTitle, previewQuestionList);
+  previewQuestionList.parentElement.insertBefore(
+    examTitle,
+    previewQuestionList
+  );
 
   test.questions.forEach((question, i) => {
     var qcontainer = document.createElement("div");
     qcontainer.className = "q-container";
-    qcontainer.id = `${i}`
+    qcontainer.id = `${i}`;
     let prompt = document.createElement("h2");
     prompt.id = "question-prompt";
     console.log(question[0]);
@@ -364,14 +358,19 @@ const previewExam = function () {
       choiceContainer.appendChild(choiceText);
       qcontainer.appendChild(choiceContainer);
     }
-    edit.addEventListener("click", function(){
+    edit.addEventListener("click", function () {
       let toBeEdited = Number(edit.parentElement.id);
       console.log(toBeEdited);
       previewContainer.classList.add("hidden");
       editModal.classList.remove("hidden");
       document.querySelector(".edit-choice-list").innerHTML = "";
       editQuestionPrompt.value = test.questions[toBeEdited][0];
-      for(let j=1;j<test.questions[toBeEdited].length && test.questions[toBeEdited][j] !== null ;j++){
+      for (
+        let j = 1;
+        j < test.questions[toBeEdited].length - 1 &&
+        !!test.questions[toBeEdited][j];
+        j++
+      ) {
         let cont = document.createElement("div");
         cont.id = "edit-choice-item";
         cont.classList.add("choice-item", "flex", "items-center");
@@ -385,7 +384,7 @@ const previewExam = function () {
         inp.type = "text";
         inp.placeholder = "Enter Choice";
         inp.className = "choice-input";
-        inp.id = "edit-choice-input"
+        inp.id = "edit-choice-input";
         inp.value = test.questions[toBeEdited][j];
 
         let del = document.createElement("button");
@@ -401,6 +400,13 @@ const previewExam = function () {
             console.log("deleting");
             totalChoice--;
             btn.parentElement.remove();
+            for (let z = 0; z < 5; z++) {
+              test.questions[toBeEdited][z] = undefined;
+            }
+            for (let z = 0; z < 5; z++) {
+              test.questions[toBeEdited][z] =
+                document.querySelectorAll("#edit-choice-input")[z].value;
+            }
           });
         });
         cont.appendChild(btn);
@@ -408,29 +414,77 @@ const previewExam = function () {
         cont.appendChild(del);
         document.querySelector(".edit-choice-list").appendChild(cont);
       }
-    })
+    });
     qcontainer.appendChild(choiceContainer);
     previewQuestionList.appendChild(qcontainer);
   });
-}
+};
 // previewExam();
 
-document.querySelector("#done-edit").addEventListener("click", function(){
+document.querySelector("#done-edit").addEventListener("click", function () {
   let editing = Number(editQuestionPrompt.parentElement.id);
   console.log("clicked");
   test.questions[editing][0] = editQuestionPrompt.value;
-  for(let k=1;k<document.querySelectorAll("#edit-choice-input").length;k++){
-    test.questions[editing][k] = document.querySelectorAll("#edit-choice-input")[k-1].value;
+  for (
+    let k = 1;
+    k < document.querySelectorAll("#edit-choice-input").length + 1;
+    k++
+  ) {
+    test.questions[editing][k] =
+      document.querySelectorAll("#edit-choice-input")[k - 1].value;
     // console.log(document.querySelectorAll("#edit-choice-input")[k-1].value);
   }
   document.querySelectorAll("#edit-choice-item").forEach((answer, i) => {
     if (answer.childNodes[0].checked) {
       test.question[editing][6] = i + 1;
     }
-  })
+  });
   console.log(test);
   previewExam();
-})
+});
+document.querySelector("#cancel-edit").addEventListener("click", function () {
+  previewExam();
+});
+
+document
+  .querySelector("#add-choice-edit")
+  .addEventListener("click", function () {
+    let cont = document.createElement("div");
+    cont.id = "edit-choice-item";
+    cont.classList.add("choice-item", "flex", "items-center");
+
+    let btn = document.createElement("input");
+    btn.type = "radio";
+    btn.className = "select-choice";
+    btn.name = "choice";
+
+    let inp = document.createElement("input");
+    inp.type = "text";
+    inp.placeholder = "Enter Choice";
+    inp.className = "choice-input";
+    inp.id = "edit-choice-input";
+
+    let del = document.createElement("button");
+    del.id = "remove-choice";
+    del.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"
+        />
+      </svg>`;
+
+    document.querySelectorAll("#remove-choice").forEach((btn) => {
+      btn.addEventListener("click", function (evt) {
+        evt.preventDefault();
+        console.log("deleting");
+        totalChoice--;
+        btn.parentElement.remove();
+      });
+    });
+    cont.appendChild(btn);
+    cont.appendChild(inp);
+    cont.appendChild(del);
+    document.querySelector(".edit-choice-list").appendChild(cont);
+  });
+
 document.getElementById("finalize-btn").addEventListener("click", previewExam);
 document.querySelector("#done-preview").addEventListener("click", function () {
   allExams.push(test);

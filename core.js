@@ -1,3 +1,5 @@
+// Declaring the classes for use across the site.
+
 class Student {
   constructor(name, id, email, examkey) {
     this.name = name;
@@ -17,7 +19,9 @@ class Exam {
     this.name = name;
     this.questions = [];
     this.key = 0;
-    this.date = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+    this.date = `${date.getDate()}/${
+      date.getMonth() + 1
+    }/${date.getFullYear()}`;
     this.status = "open";
   }
 }
