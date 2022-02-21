@@ -84,8 +84,9 @@ let avg = [];
 currentTeacherStudents.forEach((student) => {
   avg.push(student.marked.reduce((prev, next) => prev + next));
 });
-document.querySelector("#avgScore").textContent =
-  avg.reduce((prev, next) => prev + next) / avg.length;
+if (avg.length != 0)
+  document.querySelector("#avgScore").textContent =
+    avg.reduce((prev, next) => prev + next) / avg.length;
 
 function showActive() {
   document.querySelector(".exam-tile-container").innerHTML = "";
