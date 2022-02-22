@@ -1,5 +1,5 @@
 ("use strict");
-import { Student, Exam, Teacher } from "../core.js";
+import { Exam } from "../core.js";
 
 const dashboardHome = document.querySelector(".dashboard-home");
 const examListPage = document.querySelector(".exam-list");
@@ -21,45 +21,46 @@ let pages = [dashboardHome, examListPage, addExamContainer, resultPage];
 
 // let testExam = new Exam("testing");
 
+//
+// Grabbing all the necessary data from local storage
+//
 let currentSignin = -1;
 if (!!localStorage.getItem("current"));
 currentSignin = localStorage.getItem("current");
-// console.log(currentSignin);
-
 if (currentSignin === -1 || currentSignin === 0) {
   alert("please login");
   console.log("not logged in");
 }
-
 let allExams = [];
 if (!!localStorage.getItem("exams")) {
   allExams = JSON.parse(localStorage.getItem("exams"));
 }
-let totalExams = allExams.length;
-
 let allStudents = [];
 if (!!localStorage.getItem("students")) {
   allStudents = JSON.parse(localStorage.getItem("students"));
 }
-let totalStudents = allStudents.length;
-// console.log(allStudents);
 let allTeachers = [];
 if (!!localStorage.getItem("teachers")) {
   allTeachers = JSON.parse(localStorage.getItem("teachers"));
 }
+
+//Selecting the current logged in teacher
 let currentTeacher = allTeachers.find((teacher) => teacher.id == currentSignin);
-
-let currentTeacherStudents = allStudents.filter((item) => {
-  return currentTeacher.exams.includes(item.examkey);
+console.log(currentTeacher);
+let currentTeacherStudents = allStudents.filter((student) => {
+  return currentTeacher.exams.includes(student.examkey);
 });
-
+//
+//Functions executed at page load
+//
 window.onload = function () {
-  document.querySelectorAll(".list-item")[0].click();
+  // document.querySelectorAll(".list-item")[0].click();
 };
-
+//
+//event handlers for all navigation links
+//
 links.forEach((link, i) => {
   link.addEventListener("click", function () {
-    showActive;
     links.forEach((el) => {
       el.classList.remove("active");
     });
@@ -70,11 +71,12 @@ links.forEach((link, i) => {
     link.classList.add("active");
   });
 });
-
 logoutBtn.addEventListener("click", function () {
-  localStorage.setItem("current", 0);
+  localStorage.setItem("current", -1);
 });
-
+//
+//Home Page Stat Cards data
+//
 document.querySelector("#studCount").textContent =
   currentTeacherStudents.length;
 document.querySelector("#examCount").textContent = allExams.filter((test) => {
@@ -88,6 +90,9 @@ if (avg.length != 0)
   document.querySelector("#avgScore").textContent =
     avg.reduce((prev, next) => prev + next) / avg.length;
 
+//
+//Display active exams on home page
+//
 function showActive() {
   document.querySelector(".exam-tile-container").innerHTML = "";
   allExams = JSON.parse(localStorage.getItem("exams"));
@@ -101,10 +106,10 @@ function showActive() {
       let cont = document.createElement("div");
       cont.className = "exam-tile relative";
       cont.innerHTML = `<p class="exam-name">${exam.name}</p>
-    <p class="exam-key">${exam.key}</p>
-    <p class="date-created">${exam.date}</p>
-    <p class="status">${exam.status}</p>
-    `;
+      <p class="exam-key">${exam.key}</p>
+      <p class="date-created">${exam.date}</p>
+      <p class="status">${exam.status}</p>
+      `;
       document.querySelector(".exam-tile-container").appendChild(cont);
     });
 
@@ -120,10 +125,12 @@ function showActive() {
   }
 }
 showActive();
-// Page Structure
-
+//
+//Display all Exams in Exam list page
+//
 function showAllExams() {
   document.querySelector(".all-exam-container").innerHTML = ``;
+  allExams = JSON.parse(localStorage.getItem("exams"));
   allExams
     .filter((test) => {
       return test.teacherID == Number(currentSignin);
@@ -132,9 +139,11 @@ function showAllExams() {
       let cont = document.createElement("div");
       cont.className = "exam-tile relative";
       cont.innerHTML = `<p class="exam-name">${exam.name}</p>
-    <p class="exam-key">${exam.key}</p>
-    <p class="date-created">${exam.date}</p>
-    <div id ="status"> <span class = "status">${exam.status}</span> </div>`;
+      <p class="exam-key">${exam.key}</p>
+      <p class="date-created">${exam.date}</p>
+      <div id ="status"> 
+      <span class = "status">${exam.status}</span> 
+      </div>`;
       let btn = document.createElement("button");
       btn.type = "button";
       btn.className = "toggle-exam";
@@ -147,15 +156,18 @@ function showAllExams() {
       <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>`;
       cont.lastChild.appendChild(removeBtn);
+
       btn.addEventListener("click", () => {
-        let removeKey =
-          btn.parentElement.parentElement.childNodes[2].textContent;
-        let found = allExams.find((exam) => exam.key == removeKey);
+        let toggle = btn.parentElement.parentElement.childNodes[2].textContent;
+
+        let found = allExams.find((exam) => exam.key == toggle);
+
         found.status = found.status == "open" ? "closed" : "open";
         localStorage.setItem("exams", JSON.stringify(allExams));
         showAllExams();
         showActive();
       });
+
       removeBtn.addEventListener("click", () => {
         let removeKey =
           btn.parentElement.parentElement.childNodes[2].textContent;
@@ -176,26 +188,17 @@ function showAllExams() {
     });
   localStorage.setItem("exams", JSON.stringify(allExams));
 }
-
 showAllExams();
 
 document.querySelector("#add-btn").addEventListener("click", function () {
-  pages.forEach((page) => {
-    page.classList.add("hidden");
-  });
-  links.forEach((el) => {
-    el.classList.remove("active");
-  });
-  pages[2].classList.remove("hidden");
-  links[2].classList.add("active");
+  links[2].click();
 });
 
-// console.log(links[0]);
-
+//
 //INITIALIZING THE EXAM
+//
 let test = new Exam("");
 // var test = allExams[0];
-// console.log(test);
 document
   .querySelector("#proceed-to-write")
   .addEventListener("click", function (evt) {
@@ -218,8 +221,9 @@ document
     test.teacherID = currentTeacher.id;
     // console.log(test);
   });
-
+//
 // Adding Choice Items
+//
 let totalChoice = 0;
 document.querySelector("#add-choice").addEventListener("click", function (evt) {
   evt.preventDefault();
@@ -277,6 +281,9 @@ let questionNum = 1;
 const qnum = document.getElementById("question-number");
 qnum.textContent = `Question ${questionNum}`;
 
+//
+// ADDING QUESTIONS
+//
 document
   .querySelector("#add-question")
   .addEventListener("click", function (evt) {
@@ -287,7 +294,6 @@ document
       return;
     }
     let quests = document.querySelectorAll(".choice-input");
-    // console.log(quests);
     let question = [];
     question.push(questionPrompt.value);
     quests.forEach((q) => {
@@ -308,7 +314,6 @@ document
     questionNum++;
     qnum.textContent = `Question ${questionNum}`;
     test.questions.push(question);
-    // console.log(test);
     document.querySelector(".write-exam-content").reset();
     questionPrompt.clear;
     while (choiceList.firstChild) {
@@ -317,7 +322,13 @@ document
     totalChoice = 0;
   });
 
-const previewExam = function () {
+//finish writing the exam
+document.getElementById("finalize-btn").addEventListener("click", previewExam);
+//
+//Exam Preview After writing
+//
+var toBeEdited = 0;
+function previewExam() {
   console.log(test);
   document.querySelector(".preview-exam").classList.remove("hidden");
   previewContainer.classList.toggle("hidden");
@@ -347,10 +358,11 @@ const previewExam = function () {
     edit.className = "edit-question";
     edit.textContent = "Edit Question";
     qcontainer.appendChild(edit);
-    for (let j = 1; j < question.length - 1 && question[j] != null; j++) {
+    for (let j = 1; j < question.length - 1 && !!question[j]; j++) {
       var choiceContainer = document.createElement("div");
       choiceContainer.className = "choice-container";
       let choiceText = document.createElement("p");
+      if (j == question[6]) choiceText.classList.add("selected-answer");
       let char = 64;
       choiceText.textContent = `${String.fromCharCode(char + j)}. ${
         question[j]
@@ -360,7 +372,7 @@ const previewExam = function () {
       qcontainer.appendChild(choiceContainer);
     }
     edit.addEventListener("click", function () {
-      let toBeEdited = Number(edit.parentElement.id);
+      toBeEdited = Number(edit.parentElement.id);
       console.log(toBeEdited);
       previewContainer.classList.add("hidden");
       editModal.classList.remove("hidden");
@@ -373,8 +385,12 @@ const previewExam = function () {
         j++
       ) {
         let cont = document.createElement("div");
-        cont.id = "edit-choice-item";
-        cont.classList.add("choice-item", "flex", "items-center");
+        cont.classList.add(
+          "choice-item",
+          "flex",
+          "items-center",
+          "edit-choice-item"
+        );
 
         let btn = document.createElement("input");
         btn.type = "radio";
@@ -419,40 +435,22 @@ const previewExam = function () {
     qcontainer.appendChild(choiceContainer);
     previewQuestionList.appendChild(qcontainer);
   });
-};
-// previewExam();
+}
 
-document.querySelector("#done-edit").addEventListener("click", function () {
-  let editing = Number(editQuestionPrompt.parentElement.id);
-  console.log("clicked");
-  test.questions[editing][0] = editQuestionPrompt.value;
-  for (
-    let k = 1;
-    k < document.querySelectorAll("#edit-choice-input").length + 1;
-    k++
-  ) {
-    test.questions[editing][k] =
-      document.querySelectorAll("#edit-choice-input")[k - 1].value;
-    // console.log(document.querySelectorAll("#edit-choice-input")[k-1].value);
-  }
-  document.querySelectorAll("#edit-choice-item").forEach((answer, i) => {
-    if (answer.childNodes[0].checked) {
-      test.question[editing][6] = i + 1;
-    }
-  });
-  console.log(test);
-  previewExam();
-});
-document.querySelector("#cancel-edit").addEventListener("click", function () {
-  previewExam();
-});
+//
+//Editing Exams Section
+//Adding choice
 
 document
   .querySelector("#add-choice-edit")
   .addEventListener("click", function () {
     let cont = document.createElement("div");
-    cont.id = "edit-choice-item";
-    cont.classList.add("choice-item", "flex", "items-center");
+    cont.classList.add(
+      "choice-item",
+      "flex",
+      "items-center",
+      "edit-choice-item"
+    );
 
     let btn = document.createElement("input");
     btn.type = "radio";
@@ -486,7 +484,37 @@ document
     document.querySelector(".edit-choice-list").appendChild(cont);
   });
 
-document.getElementById("finalize-btn").addEventListener("click", previewExam);
+//
+//Saving Edited questions
+//
+document.querySelector("#done-edit").addEventListener("click", function () {
+  console.log("clicked");
+  test.questions[toBeEdited][0] = editQuestionPrompt.value;
+  for (
+    let k = 1;
+    k < document.querySelectorAll("#edit-choice-input").length + 1;
+    k++
+  ) {
+    test.questions[toBeEdited][k] =
+      document.querySelectorAll("#edit-choice-input")[k - 1].value;
+  }
+
+  document.querySelectorAll(".edit-choice-item").forEach((answer, i) => {
+    if (answer.childNodes[0].checked) {
+      test.questions[i][6] = i + 1;
+    }
+  });
+  console.log(test);
+  previewExam();
+});
+
+//Cancelling edit
+document.querySelector("#cancel-edit").addEventListener("click", function () {
+  previewExam();
+});
+//
+//FINALIZING THE EXAM
+//
 document.querySelector("#done-preview").addEventListener("click", function () {
   allExams.push(test);
   currentTeacher.exams.push(test.key);
@@ -495,6 +523,8 @@ document.querySelector("#done-preview").addEventListener("click", function () {
   test = null;
   window.open("dashboard.html", "_parent");
 });
+
+//Close Preview
 document
   .querySelector("#cancel-preview")
   .addEventListener("click", function (evt) {
@@ -502,13 +532,17 @@ document
     test = null;
     window.open("dashboard.html", "_parent");
   });
-
+//Cancel the Written Exam
 document
   .querySelector("#cancel-exam")
   .addEventListener("click", function (evt) {
     evt.preventDefault();
     window.open("dashboard.html", "_parent");
   });
+
+//
+//Display Results Page
+//
 
 currentTeacherStudents.forEach((student) => {
   let currentExam = allExams.find((exam) => exam.key == student.examkey);
@@ -523,16 +557,16 @@ currentTeacherStudents.forEach((student) => {
   <p class="student-name">${student.name}</p>
   <p class="student-id">${student.id}</p>
   <p class="exam-name">${currentExam.name}</p>
-  <p class="score">${student.marked.reduce((prev, next) => prev + next)}/${
+  <p class="score">${student.marked.reduce((acc, curr) => acc + curr)}/${
     student.marked.length
   }</p>
-</div>
-<div class="result-description flex flex-col gap-2">
-  <div class="flex">
-  <p>Question Number:</p>
-  <span class="monospace"> ${checking.map((_, i) => i + 1).join(" | ")}</span>
-  </div>
-  <div class="flex">
+    </div>
+    <div class="result-description flex flex-col gap-2 hidden">
+    <div class="flex">
+    <p>Question Number:</p>
+    <span class="monospace"> ${checking.map((_, i) => i + 1).join(" | ")}</span>
+    </div>
+    <div class="flex">
     <p>Correct Answers: </p>
     <span class="monospace">${checking
       .map((choice) => {
@@ -552,4 +586,11 @@ currentTeacherStudents.forEach((student) => {
 </div>`;
 
   document.querySelector(".result-tile-container").appendChild(cont);
+});
+
+document.querySelectorAll(".result-tile").forEach((tile) => {
+  tile.addEventListener("click", function (evt) {
+    evt.preventDefault();
+    tile.parentElement.childNodes[2].classList.toggle("hidden");
+  });
 });
