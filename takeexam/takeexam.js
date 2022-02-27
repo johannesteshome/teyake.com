@@ -7,17 +7,18 @@ const studName = document.querySelector("#student-name");
 const studEmail = document.querySelector("#student-email");
 const studID = document.querySelector("#student-id");
 const modal = document.querySelector(".modal");
-const resultStudName = document.querySelector("#result-student-name")
-const resultExamName = document.querySelector("#result-exam-name")
-const score = document.querySelector("#score")
-const resultMax = document.querySelector("#result-max")
-const finishExam = document.querySelector("#finish-exam")
-const warningModal = document.querySelector('#warning-modal')
-const remainingSeconds = document.querySelector('#remainingSeconds')
+const resultStudName = document.querySelector("#result-student-name");
+const resultExamName = document.querySelector("#result-exam-name");
+const score = document.querySelector("#score");
+const resultMax = document.querySelector("#result-max");
+const finishExam = document.querySelector("#finish-exam");
+const warningModal = document.querySelector("#warning-modal");
+const remainingSeconds = document.querySelector("#remainingSeconds");
+const erorrLabel = document.getElementById("errorMsg");
 
-let leaveExamWarningTimeout = null
-let warningTimerInterval = null
-let warningSeconds = 11
+let leaveExamWarningTimeout = null;
+let warningTimerInterval = null;
+let warningSeconds = 11;
 
 let studKey = "-1";
 if (!!localStorage.getItem("studKey")) {
@@ -54,16 +55,32 @@ let currentExam;
 
 enterBtn.addEventListener("click", function (evt) {
   evt.preventDefault();
+  let key = inputKey.value;
+
+  const emailPattern = new RegExp(/\w+@\w+.\w+(\.\w+)?$/);
+  const namePattern = new RegExp(/^\w+.[ ]\w+.$/);
+
+  if (!emailPattern.test(studEmail.value)) {
+    erorrLabel.innerText = "Invalid Email Address.";
+    studEmail.focus();
+    return;
+  }
+
+  if (!namePattern.test(studName.value)) {
+    erorrLabel.innerText = "Invalid Full Name";
+    studName.focus();
+    return;
+  }
+
   if (
     inputKey.value == "" ||
     studName.value == "" ||
     studEmail.value == "" ||
     studID.value == ""
   ) {
-    alert("Empty Fields");
+    erorrLabel.innerText = "Empty Fields";
     return;
   }
-  let key = inputKey.value;
   // console.log(key);
   allExams.forEach((exam) => {
     if (key === String(exam.key)) {
@@ -90,53 +107,53 @@ enterBtn.addEventListener("click", function (evt) {
 
 document.querySelector("#back-to-exam").addEventListener("click", function () {
   document.documentElement.requestFullscreen();
-}) 
+});
 
 document.querySelector("#exit-exam").addEventListener("click", exitExam);
 
 function exitExam() {
-  hideModal()
+  hideModal();
   console.log("exitting Exam");
   document.querySelector("#submit-exam").click();
-  clearTimers()
+  clearTimers();
 }
 
 function hideModal() {
-  warningModal.classList.add('hidden')
+  warningModal.classList.add("hidden");
 }
 
 function showModal() {
-  warningModal.classList.remove('hidden')
+  warningModal.classList.remove("hidden");
 }
 
 function clearTimers() {
   if (leaveExamWarningTimeout) {
-      clearTimeout(leaveExamWarningTimeout)
+    clearTimeout(leaveExamWarningTimeout);
   }
   if (warningTimerInterval) {
-      clearInterval(warningTimerInterval)
+    clearInterval(warningTimerInterval);
   }
 }
 
 function showExam() {
-  document.addEventListener('fullscreenchange', event => {
+  document.addEventListener("fullscreenchange", (event) => {
     if (document.fullscreenElement) {
-        clearTimers()
-        warningSeconds = 11
-        hideModal()
+      clearTimers();
+      warningSeconds = 11;
+      hideModal();
     } else {
-        console.log('not full screen')
-        remainingSeconds.textContent = 10
-        showModal()
-        leaveExamWarningTimeout = setTimeout(() => {
-            exitExam()
-        }, warningSeconds * 1000)
-        warningTimerInterval = setInterval(() => {
-            warningSeconds--
-            remainingSeconds.textContent = warningSeconds
-        }, 1000)
+      console.log("not full screen");
+      remainingSeconds.textContent = 10;
+      showModal();
+      leaveExamWarningTimeout = setTimeout(() => {
+        exitExam();
+      }, warningSeconds * 1000);
+      warningTimerInterval = setInterval(() => {
+        warningSeconds--;
+        remainingSeconds.textContent = warningSeconds;
+      }, 1000);
     }
-})
+  });
 
   let examTitle = document.createElement("h1");
   examTitle.textContent = currentExam.name;
@@ -174,7 +191,7 @@ function showExam() {
     examContainer.appendChild(qcontainer);
   });
   console.log(student);
-};
+}
 
 document.querySelector("#submit-exam").addEventListener("click", function () {
   let ansContainer = document.querySelectorAll(".q-container");
@@ -202,11 +219,10 @@ document.querySelector("#submit-exam").addEventListener("click", function () {
   localStorage.setItem("students", JSON.stringify(allStudents));
   // student = null;
 });
-function showResult(){
-  document.querySelector(".result").classList.remove("hidden")
+function showResult() {
+  document.querySelector(".result").classList.remove("hidden");
   resultStudName.textContent = student.name;
   resultExamName.textContent = currentExam.name;
   resultMax.textContent = student.marked.length;
-  score.textContent = student.marked.reduce((prev, next)=>prev+next);
-
+  score.textContent = student.marked.reduce((prev, next) => prev + next);
 }
